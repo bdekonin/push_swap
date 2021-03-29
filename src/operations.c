@@ -6,13 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 14:35:54 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/03/18 13:32:10 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/03/18 20:08:21 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-static t_list *ft_lstgetbefore(t_list *head, t_list *before)
+static t_node*ft_lstgetbefore(t_node *head, t_node*before)
 {
 	while (head)
 	{
@@ -31,22 +31,56 @@ static void kaas(int *x,int *y) // swapper
     *y   =  t;
 }
 
-void	ft_node_add_front(t_list **head, t_list *new)
-{
-	new->next = *head;
-	*head = new;
-}
 
+
+void caller(t_vars *v, size_t command, int print)
+{
+	void	(*p[11]) (t_vars *v);
+	p[0] = sa;
+	p[1] = sb;
+	p[2] = ss;
+
+	p[3] = pa;
+	p[4] = pb;
+	
+	p[5] = ra;
+	p[6] = rb;
+	p[7] = rr;
+	
+	p[8] = rra;
+	p[9] = rrb;
+	p[10] = rrr;
+
+	char *name[11];
+	name[0] = "sa";
+	name[1] = "sb";
+	name[2] = "ss";
+ 
+	name[3] = "pa"; 
+	name[4] = "pb";
+ 	
+	name[5] = "ra";
+	name[6] = "rb";
+	name[7] = "rr";
+	
+	name[8] = "rra";
+	name[9] = "rrb";
+	name[10] = "rrr";
+
+	if (print == 1)
+		ft_putendl_fd(name[command], 1);
+	(*p[command])(v);
+}
 
 void sa(t_vars *v) // swap a - swap the first 2 elements at the top of stack a
 {
-	if (!v->a || ft_lstsize(v->a) == 1)
+	if (!v->a || ft_node_size(v->a) == 1)
 		return ;
 	kaas(v->a->content, v->a->next->content);
 }
 void sb(t_vars *v) // swap b - swap the first 2 elements at the top of stack b
 {
-	if (!v->b || ft_lstsize(v->b) == 1)
+	if (!v->b || ft_node_size(v->b) == 1)
 		return ;
 	kaas(v->b->content, v->b->next->content);
 }
@@ -58,49 +92,42 @@ void ss(t_vars *v) // sa and sb at the same time.
 
 void pa(t_vars *v) // push a - take the first element at the top of b and put it at the top of a
 {
-	t_list *temp;
+	t_node	*tmp;
+
 	if (!v->b)
 		return ;
-
-	temp = v->b->next;
-	ft_node_add_front(&v->a, v->b);
-	v->b = temp;
+	tmp = v->b;
+	ft_node_unlink(&v->b, v->b);
+	ft_node_add_front(&v->a, tmp);
 }
 void pb(t_vars *v) // push b - take the first element at the top of a and put it at the top of b
 {
-	ft_putendl_fd("pb", 1);
-	t_list *temp;
+	t_node	*tmp;
+
 	if (!v->a)
 		return ;
-
-	temp = v->a->next;
-	ft_node_add_front(&v->b, v->a);
-	v->a = temp;
+	tmp = v->a;
+	ft_node_unlink(&v->a, v->a);
+	ft_node_add_front(&v->b, tmp);
 }
 
 void ra(t_vars *v) // rotate a - shift up all elements of stack a by 1. The first element becomes the last one.
 {
-	ft_putendl_fd("ra", 1);
-	t_list *temp;
-	t_list *last;
-
-	temp = v->a;
-	last = ft_lstlast(v->a);
-	v->a = v->a->next;
-	last->next = temp;
-	temp->next = NULL;
-	
+	t_node *tmp;
+	if (!v->a)
+		return ;
+	tmp = v->a;
+	ft_node_unlink(&v->a, v->a);
+	ft_node_add_back(&v->a, tmp);
 }
 void rb(t_vars *v) // rotate b - shift up all elements of stack b by 1. The first element becomes the last one.
 {
-	t_list *temp;
-	t_list *last;
-
-	temp = v->b;
-	last = ft_lstlast(v->b);
-	v->b = v->b->next;
-	last->next = temp;
-	temp->next = NULL;
+	t_node *tmp;
+	if (!v->b)
+		return ;
+	tmp = v->b;
+	ft_node_unlink(&v->b, v->b);
+	ft_node_add_back(&v->b, tmp);
 }
 void rr(t_vars *v) // ra and rb at the same time.
 {
@@ -110,23 +137,34 @@ void rr(t_vars *v) // ra and rb at the same time.
 
 void rra(t_vars *v) // reverse rotate a - shift down all elements of stack a by 1. The last element becomes the first one.
 {
-	t_list *last;
+	t_node *temp;
+	t_node *last;
 
-	last = ft_lstlast(v->a);
+	if (!v->a || !v->a->next)
+		return ;
+	temp = ft_node_last(v->a);
 
-	ft_lstgetbefore(v->a, ft_lstlast(v->a))->next = NULL;
-	
-	ft_lstmove_front(&v->a, last);
+	last = temp->prev;
+	ft_node_unlink(&v->a, temp);
+	ft_node_add_front(&v->a, temp);
+
+
+	// t_node *last;
+
+	// last = ft_node_last(v->a);
+
+	// ft_lstgetbefore(v->a, last)->next = NULL;
+	// ft_node_add_front(&v->a, last);
 }
 void rrb(t_vars *v) // reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
 {
-	t_list *last;
+	t_node*last;
 
-	last = ft_lstlast(v->b);
+	last = ft_node_last(v->b);
 
-	ft_lstgetbefore(v->b, ft_lstlast(v->b))->next = NULL;
+	ft_lstgetbefore(v->b, ft_node_last(v->b))->next = NULL;
 	
-	ft_lstmove_front(&v->b, last);
+	ft_node_add_front(&v->b, last);
 }
 void rrr(t_vars *v) // rra and rrb at the same time.
 {

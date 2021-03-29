@@ -3,129 +3,173 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: lverdoes <marvin@codam.nl>                   +#+                      #
+#    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/11/22 17:32:04 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/18 11:56:48 by bdekonin      ########   odam.nl          #
+#    Created: 2020/12/04 13:12:33 by lverdoes      #+#    #+#                  #
+#    Updated: 2021/03/05 16:54:53 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	libft.a
+NAME	= libft.a
+HEADERS = libft.h
+CC		= gcc
+FLAGS	= -Wall -Wextra -Werror -pedantic -I.
+UNUSED	= -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
 
 MANDATORY =	\
-	/mandatory/ft_memset.c \
-	/mandatory/ft_bzero.c \
-	/mandatory/ft_memcpy.c \
-	/mandatory/ft_memccpy.c \
-	/mandatory/ft_memmove.c \
-	/mandatory/ft_memchr.c \
-	/mandatory/ft_memcmp.c \
-	/mandatory/ft_strlen.c \
-	/mandatory/ft_strlcpy.c \
-	/mandatory/ft_strlcat.c \
-	/mandatory/ft_strchr.c \
-	/mandatory/ft_strrchr.c \
-	/mandatory/ft_strnstr.c \
-	/mandatory/ft_strncmp.c \
-	/mandatory/ft_atoi.c \
-	/mandatory/ft_isalpha.c \
-	/mandatory/ft_isdigit.c \
-	/mandatory/ft_isalnum.c \
-	/mandatory/ft_isascii.c \
-	/mandatory/ft_isprint.c \
-	/mandatory/ft_toupper.c \
-	/mandatory/ft_tolower.c \
-	/mandatory/ft_calloc.c \
-	/mandatory/ft_strdup.c \
-	/mandatory/ft_substr.c \
-	/mandatory/ft_strjoin.c \
-	/mandatory/ft_strtrim.c \
-	/mandatory/ft_split.c \
-	/mandatory/ft_itoa.c \
-	/mandatory/ft_strmapi.c \
-	/mandatory/ft_putchar_fd.c \
-	/mandatory/ft_putstr_fd.c \
-	/mandatory/ft_putendl_fd.c \
-	/mandatory/ft_putnbr_fd.c
+	ft_memset.c \
+	ft_bzero.c \
+	ft_memcpy.c \
+	ft_memccpy.c \
+	ft_memmove.c \
+	ft_memchr.c \
+	ft_memcmp.c \
+	ft_strlen.c \
+	ft_strlcpy.c \
+	ft_strlcat.c \
+	ft_strchr.c \
+	ft_strrchr.c \
+	ft_strnstr.c \
+	ft_strncmp.c \
+	ft_atoi.c \
+	ft_isalpha.c \
+	ft_isdigit.c \
+	ft_isalnum.c \
+	ft_isascii.c \
+	ft_isprint.c \
+	ft_toupper.c \
+	ft_tolower.c \
+	ft_calloc.c \
+	ft_strdup.c \
+	ft_substr.c \
+	ft_strjoin.c \
+	ft_strtrim.c \
+	ft_split.c \
+	ft_itoa.c \
+	ft_strmapi.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c
 
-BONUS =	\
-	/bonus/ft_lstnew_bonus.c \
-	/bonus/ft_lstadd_front_bonus.c \
-	/bonus/ft_lstsize_bonus.c \
-	/bonus/ft_lstlast_bonus.c \
-	/bonus/ft_lstadd_back_bonus.c \
-	/bonus/ft_lstdelone_bonus.c \
-	/bonus/ft_lstclear_bonus.c \
-	/bonus/ft_lstiter_bonus.c \
-	/bonus/ft_lstmap_bonus.c
+LST = \
+	ft_lstadd_back.c \
+	ft_lstadd_front.c \
+	ft_lstclear.c \
+	ft_lstdelone.c \
+	ft_lstfind.c \
+	ft_lstiter.c \
+	ft_lstlast.c \
+	ft_lstmap.c \
+	ft_lstnew.c \
+	ft_lstsize.c \
 
-ADDED =	\
-	/added/ft_append_bonus.c \
-	/added/ft_array_size_bonus.c \
-	/added/ft_arraydup_bonus.c \
-	/added/ft_atod_bonus.c \
-	/added/ft_charsearch_bonus.c \
-	/added/ft_counter_bonus.c \
-	/added/ft_free_array_bonus.c \
-	/added/ft_getline_bonus.c \
-	/added/ft_iswhitespace_bonus.c \
-	/added/ft_lstmove_back_bonus.c \
-	/added/ft_lstmove_front_bonus.c \
-	/added/ft_lstremove_one_bonus.c \
-	/added/ft_print_array_bonus.c \
-	/added/ft_realloc_bonus.c \
-	/added/ft_replace_bonus.c \
-	/added/ft_split_multi_bonus.c \
-	/added/ft_str_to_lower_bonus.c \
-	/added/ft_str_to_upper_bonus.c \
-	/added/ft_strcmp_bonus.c \
-	/added/ft_strxjoin_bonus.c \
-	/added/ft_substrlen_bonus.c \
-	/added/get_next_line_bonus.c \
-	/added/ft_swap_bonus.c \
-	/added/ft_wordcount_bonus.c
+EXT =	\
+	ft_append.c \
+	ft_array_size.c \
+	ft_arraydup.c \
+	ft_atod.c \
+	ft_atoi_base.c \
+	ft_concat_array.c \
+	ft_counter.c \
+	ft_free_array.c \
+	ft_intdup.c \
+	ft_iswhitespace.c \
+	ft_print_array.c \
+	ft_print_int_array.c \
+	ft_realloc.c \
+	ft_replace.c \
+	ft_split_strchr.c \
+	ft_split_strnstr.c \
+	ft_str_contains_none.c \
+	ft_str_contains_only.c \
+	ft_str_to_lower.c \
+	ft_str_to_upper.c \
+	ft_strcmp.c \
+	ft_strxjoin.c \
+	ft_substrlen.c \
+	ft_swap.c \
+	ft_unique_chars.c
 
-OBJ = $(addprefix obj, $(MANDATORY:.c=.o) $(BONUS:.c=.o) $(ADDED:.c=.o))
+GNL = \
+	ft_getline.c \
+	get_next_line.c
 
-CC = gcc -Wall -Wextra -Werror -g
+NODE = \
+	ft_node_add_back.c \
+	ft_node_add_front.c \
+	ft_node_del_all.c \
+	ft_node_del_one.c \
+	ft_node_dup.c \
+	ft_node_find.c \
+	ft_node_insert_after.c \
+	ft_node_insert_before.c \
+	ft_node_insert_sort.c \
+	ft_node_is_sorted.c \
+	ft_node_iter.c \
+	ft_node_join.c \
+	ft_node_last.c \
+	ft_node_merge.c \
+	ft_node_new.c \
+	ft_node_number.c \
+	ft_node_remove_if.c \
+	ft_node_remove_one.c \
+	ft_node_size.c \
+	ft_node_sort.c \
+	ft_node_unlink.c \
+	ft_print_node_list.c
 
-HEADERS = libft.h
+SORT = \
+	ft_bubble_sort_int.c \
+	ft_bubble_sort_str.c \
+	ft_merge_sort_int.c \
+	ft_merge_sort_str.c
 
-IGNORE = .gitignore
+SRC_DIRS = \
+	$(addprefix mandatory/, $(MANDATORY)) \
+	$(addprefix ext/, $(EXT)) \
+	$(addprefix gnl/, $(GNL)) \
+	$(addprefix lst/, $(LST)) \
+	$(addprefix node/, $(NODE)) \
+	$(addprefix sort/, $(SORT))
+
+OBJ_DIRS = \
+	obj \
+	obj/mandatory \
+	obj/ext \
+	obj/gnl \
+	obj/lst \
+	obj/node \
+	obj/sort
 
 all: $(NAME)
+
+SRC	= $(addprefix src/, $(SRC_DIRS))
+OBJ = $(SRC:src/%.c=obj/%.o)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $?
 
-obj/%.o: %.c
-	@mkdir -p obj obj/mandatory obj/bonus obj/added
-	$(CC) -c $< -o $@
-
-norm:
-	@norminette $(addprefix ., $(MANDATORY) $(BONUS) $(ADDED))
-	@norminette $(HEADERS) Makefile
-
-ignore:
-	@echo $(NAME) > $(IGNORE)
-	@echo .DS_Store >> $(IGNORE)
-	@echo *.o >> $(IGNORE)
-	@echo **/obj >> $(IGNORE)
-	@echo a.out  >> $(IGNORE)
-	@echo main.c >> $(IGNORE)
-	@echo *.txt >> $(IGNORE)
+obj/%.o: src/%.c
+	@mkdir -p $(OBJ_DIRS)
+	$(CC) $(FLAGS) -c $< -o $@
 
 .PHONY:	clean fclean re
 
 clean:
 	@/bin/rm -f $(OBJ)
-	@/bin/rm -f *~
-	@/bin/rm -f *.o
 	@/bin/rm -f .DS_Store
 	@/bin/rm -f a.out
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f *.a
+	@/bin/rm -rf $(OBJ_DIRS)
 
 re: fclean all
+
+main: all
+	$(CC) $(FLAGS) $(UNUSED) $(NAME) main.c utils/*.c
+	./a.out
+
+test: main

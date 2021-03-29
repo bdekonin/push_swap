@@ -6,52 +6,51 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 13:23:22 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/03/18 13:36:31 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/03/29 13:12:24 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void simple(t_vars *v, char **argv)
-{
+// void simple(t_vars *v, char **argv)
+// {
 
-	for (int i = 0; argv[i]; i++)
+// 	for (int i = 0; argv[i]; i++)
+// 	{
+// 		if (i == 0)
+// 		{
+// 			v->a = ft_lstnew(argv[i]);
+// 			v->b = ft_lstnew(NULL);
+// 		}
+// 		else
+// 		{
+// 			ft_lstadd_back(&v->a, ft_lstnew(argv[i]));
+// 			ft_lstadd_back(&v->b, ft_lstnew(NULL));
+// 		}
+// 	}
+// }
+
+void print_node_list(t_node *node)
+{
+	while (node)
 	{
-		if (i == 0)
-		{
-			v->a = ft_lstnew(argv[i]);
-			v->b = ft_lstnew(NULL);
-		}
-		else
-		{
-			ft_lstadd_back(&v->a, ft_lstnew(argv[i]));
-			ft_lstadd_back(&v->b, ft_lstnew(NULL));
-		}
+		ft_putstr_fd("[", 1);
+		ft_putstr_fd(node->content, 1);
+		ft_putendl_fd("]", 1);
+		node = node->next;
 	}
 }
 
 void listprinter(t_vars *v)
 {
-	t_list	*tempA = v->a;
-	t_list	*tempB = v->b;
-	// while (tempA && tempB)
-	// for (t_list *temp = v->a; temp; temp = temp->next)
-	while (1)
-	{
-		printf("(a) [%s]\t\t(b) [%s]\n", tempA->content, tempB->content);
-		if (tempA)
-			tempA = tempA->next;
-		// else
-		// 	tempA->content = ft_strdup("");
-		if (tempB)
-			tempB = tempB->next;
-		// else
-		// 	tempB->content = ft_strdup("");
-		
-		if (!tempA && !tempB)
-			break ;
-	}
-	printf("\n");
+	ft_putendl_fd("", 1);
+	ft_putendl_fd("", 1);
+	ft_putendl_fd("", 1);
+	ft_putendl_fd("A", 1);
+	print_node_list(v->a);
+	ft_putendl_fd("", 1);
+	ft_putendl_fd("B", 1);
+	print_node_list(v->b);
 }
 
 void readinput(t_vars *v)
@@ -92,27 +91,24 @@ void init(t_vars *v, char **argv)
 {
 	// check duplicate
 
-	v->a = ft_lstnew(argv[0]);
-	v->b = ft_lstnew(NULL);
+	if (ft_array_size(argv) > 1)
+		;
+	else
+		argv = ft_split(argv[1], ' ');
+		
+	v->a = ft_node_new(argv[0]);
+	// v->b = ft_node_new(NULL);
 	for (int i = 1; argv[i]; i++)
-		ft_lstadd_back(&v->a, ft_lstnew(argv[i]));
+		ft_node_add_back(&v->a, ft_node_new(argv[i]));
 }
 
 int main(int argc, char **argv)
 {
 	t_vars v;
 	ft_bzero(&v, sizeof(t_vars));
-	
-	argv = ft_split(argv[1], ' ');
-	// simple(&v, argv);
 	init(&v, argv);
 	
-	// listprinter(&v);
-
+	listprinter(&v);
 	solve(&v);
-
-	// listprinter(&v);
-	// readinput(&v);
-
-	// listprinter(&v);
+	listprinter(&v);
 }

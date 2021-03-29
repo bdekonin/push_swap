@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 14:36:08 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/03/17 21:35:53 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/03/18 19:39:46 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,30 @@
 
 typedef struct		s_vars
 {
-	t_list			*a;
-	t_list			*b;
+	t_node			*a;
+	t_node			*b;
 }					t_vars;
 
-int issorted(t_list *head);
+int issorted(t_node*head);
 void solve(t_vars *v);
 
+
+#define SA 0
+#define SB 1
+#define SS 2
+
+#define PA 3
+#define PB 4
+
+#define RA 5
+#define RB 6
+#define RR 7
+
+#define RRA 8
+#define RRB 9
+#define RRR 10
+
+void caller(t_vars *v, size_t command, int print);
 
 void sa(t_vars *v);
 void sb(t_vars *v);
