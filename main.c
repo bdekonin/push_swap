@@ -6,29 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 13:23:22 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/03/29 13:12:24 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/03/30 10:39:42 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-// void simple(t_vars *v, char **argv)
-// {
-
-// 	for (int i = 0; argv[i]; i++)
-// 	{
-// 		if (i == 0)
-// 		{
-// 			v->a = ft_lstnew(argv[i]);
-// 			v->b = ft_lstnew(NULL);
-// 		}
-// 		else
-// 		{
-// 			ft_lstadd_back(&v->a, ft_lstnew(argv[i]));
-// 			ft_lstadd_back(&v->b, ft_lstnew(NULL));
-// 		}
-// 	}
-// }
+void	print_stacks(t_vars *v, char *next_cmd);
 
 void print_node_list(t_node *node)
 {
@@ -91,10 +75,7 @@ void init(t_vars *v, char **argv)
 {
 	// check duplicate
 
-	if (ft_array_size(argv) > 1)
-		;
-	else
-		argv = ft_split(argv[1], ' ');
+	argv = ft_split(argv[1], ' ');
 		
 	v->a = ft_node_new(argv[0]);
 	// v->b = ft_node_new(NULL);
@@ -108,7 +89,8 @@ int main(int argc, char **argv)
 	ft_bzero(&v, sizeof(t_vars));
 	init(&v, argv);
 	
-	listprinter(&v);
+	// listprinter(&v);
 	solve(&v);
-	listprinter(&v);
+	// listprinter(&v);
+	// print_stacks(&v, "");
 }

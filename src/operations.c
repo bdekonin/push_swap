@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 14:35:54 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/03/18 20:08:21 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/01 13:53:30 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void caller(t_vars *v, size_t command, int print)
 	name[9] = "rrb";
 	name[10] = "rrr";
 
+	if (print == 1)
+		print_stacks(v, name[command]);
 	if (print == 1)
 		ft_putendl_fd(name[command], 1);
 	(*p[command])(v);

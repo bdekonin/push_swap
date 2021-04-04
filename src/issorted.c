@@ -6,13 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/17 21:30:27 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/03/18 22:26:17 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/03/30 09:27:18 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-int issorted(t_node*head)
+int issorted(t_node *head)
 {
 	while (head->next)
 	{

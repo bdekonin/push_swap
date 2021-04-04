@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 14:36:08 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/03/18 19:39:46 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/01 12:59:04 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void solve(t_vars *v);
 #define RRB 9
 #define RRR 10
 
+void insertionsort(t_vars *v);
+void bubblesort(t_vars *v);
+
 void caller(t_vars *v, size_t command, int print);
 
 void sa(t_vars *v);
@@ -60,5 +63,9 @@ void rr(t_vars *v);
 void rra(t_vars *v);
 void rrb(t_vars *v);
 void rrr(t_vars *v);
+
+
+void	print_stacks(t_vars *v, char *next_cmd);
+
 
 #endif // MAIN_HPP

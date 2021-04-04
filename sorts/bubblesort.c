@@ -1,20 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   solver.c                                           :+:    :+:            */
+/*   bubblesort.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/17 21:33:21 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/01 13:44:53 by bdekonin      ########   odam.nl         */
+/*   Created: 2021/04/01 13:01:47 by bdekonin      #+#    #+#                 */
+/*   Updated: 2021/04/01 13:55:19 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
-void listprinter(t_vars *v);
 
-void solve(t_vars *v)
+void loop(t_vars *v)
 {
-	// insertionsort(v);
-	bubblesort(v);
+	int i = 0;
+	int n = ft_node_size(v->a);
+	
+	int a;
+	int b;
+
+	caller(v, PB, 0);
+	
+	while (i < n)
+	{
+		a = ft_atoi(v->a->content);
+		b = ft_atoi(v->b->content);
+
+		if (b > a)
+			caller(v, PB, 1);
+		
+		
+		caller(v, RA, 1);
+		i++;
+	}
+}
+
+void bubblesort(t_vars *v)
+{
+	loop(v);
 }
