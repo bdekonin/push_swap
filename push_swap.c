@@ -1,41 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   push_swap.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 13:23:22 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/03/30 10:39:42 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/06 15:38:08 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "push_swap.h"
 
 void	print_stacks(t_vars *v, char *next_cmd);
-
-void print_node_list(t_node *node)
-{
-	while (node)
-	{
-		ft_putstr_fd("[", 1);
-		ft_putstr_fd(node->content, 1);
-		ft_putendl_fd("]", 1);
-		node = node->next;
-	}
-}
-
-void listprinter(t_vars *v)
-{
-	ft_putendl_fd("", 1);
-	ft_putendl_fd("", 1);
-	ft_putendl_fd("", 1);
-	ft_putendl_fd("A", 1);
-	print_node_list(v->a);
-	ft_putendl_fd("", 1);
-	ft_putendl_fd("B", 1);
-	print_node_list(v->b);
-}
 
 void readinput(t_vars *v)
 {
@@ -67,30 +44,66 @@ void readinput(t_vars *v)
 			rrb(v);
 		else if (!ft_strncmp(line, "rrr", 4))
 			rrr(v);
-		listprinter(v);
 	}
 }
 
-void init(t_vars *v, char **argv)
+void init(t_vars *v, char argc, char **argv)
 {
+	char **array;
+
 	// check duplicate
 
-	argv = ft_split(argv[1], ' ');
-		
-	v->a = ft_node_new(argv[0]);
-	// v->b = ft_node_new(NULL);
+	v->a = NULL;
+	array = NULL;
 	for (int i = 1; argv[i]; i++)
-		ft_node_add_back(&v->a, ft_node_new(argv[i]));
+	{
+		array = ft_split(argv[i], ' ');
+		
+		for (int j = 0; array[j]; j++)
+			ft_node_add_back(&v->a, ft_node_new(ft_strdup(array[j])));
+		free(array);
+	}
 }
 
 int main(int argc, char **argv)
 {
 	t_vars v;
 	ft_bzero(&v, sizeof(t_vars));
-	init(&v, argv);
+	init(&v, argc, argv);
+
+	if (ft_node_size(v.a) > 0)
+		;
+	else
+	{
+		printf("DSnjhbajkdgbajkdna\n");
+		exit(1);
+	}
 	
-	// listprinter(&v);
+	// print_stacks(&v, "end");
 	solve(&v);
-	// listprinter(&v);
-	// print_stacks(&v, "");
+	// print_stacks(&v, "end");
+
+
+	// if (issorted(v.a) == 1)
+	// 	printf("[OK]\n");
+	// else
+	// 	printf("[KO]\n");
 }
+
+
+
+/*
+	5 < 12
+	"1 5 2 4 3"
+	"4 9 3 7 1"
+	"9 4 6 8 2"
+
+	3 < 4
+	"2 1 0"
+	" 1 2 0"
+
+	""
+	
+
+
+*/

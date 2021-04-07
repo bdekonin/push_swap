@@ -26,7 +26,7 @@ You can decrease or increase the speed with the matching buttons.
 """
 
 
-RELATIVE_PATH = r'a.out'
+RELATIVE_PATH = r'../push_swap'
 
 
 class PsGui:
@@ -110,7 +110,7 @@ class PsGui:
         if self.speed == 0:
             self.PauseCtl.config(text='||')
             self.speed = self.prespeed
-        self.speed = self.speed ** 2
+        self.speed = self.speed ** 5
         self.speedmeter.config(text='frame rate = ' \
                                     + '{:.2e}'.format(self.speed))
 

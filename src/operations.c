@@ -6,11 +6,11 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 14:35:54 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/01 13:53:30 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/06 15:16:32 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "../push_swap.h"
 
 static t_node*ft_lstgetbefore(t_node *head, t_node*before)
 {
@@ -33,7 +33,7 @@ static void kaas(int *x,int *y) // swapper
 
 
 
-void caller(t_vars *v, size_t command, int print)
+void caller(t_vars *v, size_t command)
 {
 	void	(*p[11]) (t_vars *v);
 	p[0] = sa;
@@ -67,9 +67,9 @@ void caller(t_vars *v, size_t command, int print)
 	name[9] = "rrb";
 	name[10] = "rrr";
 
-	if (print == 1)
+	if (PRINT)
 		print_stacks(v, name[command]);
-	if (print == 1)
+	if (PRINT2)
 		ft_putendl_fd(name[command], 1);
 	(*p[command])(v);
 }
@@ -149,24 +149,19 @@ void rra(t_vars *v) // reverse rotate a - shift down all elements of stack a by 
 	last = temp->prev;
 	ft_node_unlink(&v->a, temp);
 	ft_node_add_front(&v->a, temp);
-
-
-	// t_node *last;
-
-	// last = ft_node_last(v->a);
-
-	// ft_lstgetbefore(v->a, last)->next = NULL;
-	// ft_node_add_front(&v->a, last);
 }
 void rrb(t_vars *v) // reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
 {
-	t_node*last;
+	t_node *temp;
+	t_node *last;
 
-	last = ft_node_last(v->b);
+	if (!v->b || !v->b->next)
+		return ;
+	temp = ft_node_last(v->b);
 
-	ft_lstgetbefore(v->b, ft_node_last(v->b))->next = NULL;
-	
-	ft_node_add_front(&v->b, last);
+	last = temp->prev;
+	ft_node_unlink(&v->b, temp);
+	ft_node_add_front(&v->b, temp);
 }
 void rrr(t_vars *v) // rra and rrb at the same time.
 {

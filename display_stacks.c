@@ -6,25 +6,25 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/28 14:28:25 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/30 10:29:18 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/06 15:26:59 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 
-#include "main.h"
+#include "push_swap.h"
 
 void	print_line(t_node *n_a, t_node *n_b)
 {
 	if (n_a)
-		printf("\t[%6s]", n_a->content);
+		dprintf(2, "\t[%6s]", n_a->content);
 	else
-		printf("\t[      ]");
+		dprintf(2, "\t[      ]");
 	if (n_b)
-		printf("\t[%6s]", n_b->content);
+		dprintf(2, "\t[%6s]", n_b->content);
 	else
-		printf("\t[      ]");
+		dprintf(2, "\t[      ]");
 }
 void	print_stacks(t_vars *v, char *next_cmd)
 {
@@ -32,10 +32,10 @@ void	print_stacks(t_vars *v, char *next_cmd)
 	t_node	*n_b;
 	n_a = v->a;
 	n_b = v->b;
-	usleep(850000);
-	printf("\E[H\E[2J");
-	printf("           stack A         stack B\n");
-	printf("cmd:[%s]\n", next_cmd);
+	// usleep(850000);
+	dprintf(2, "\E[H\E[2J");
+	dprintf(2, "           stack A         stack B\n");
+	dprintf(2, "cmd:[%s]\n", next_cmd);
 	while (n_a || n_b)
 	{
 		print_line(n_a, n_b);
@@ -43,7 +43,7 @@ void	print_stacks(t_vars *v, char *next_cmd)
 			n_a = n_a->next;
 		if (n_b)
 			n_b = n_b->next;
-		printf("\n");
+		dprintf(2, "\n");
 	}
-//	printf("\E[H\E[2J");
+//	dprintf(2, "\E[H\E[2J");
 }

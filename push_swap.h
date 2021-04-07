@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   push_swap.h                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 14:36:08 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/01 12:59:04 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/06 14:48:38 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "libft/libft.h"
-
-#include "debug-utils/debug_utils.h"
+#include <stdlib.h>
 
 typedef struct		s_vars
 {
@@ -44,10 +43,13 @@ void solve(t_vars *v);
 #define RRB 9
 #define RRR 10
 
-void insertionsort(t_vars *v);
-void bubblesort(t_vars *v);
+#define PRINT 0
+#define PRINT2 1
 
-void caller(t_vars *v, size_t command, int print);
+void insertionsort(t_vars *v);
+void insertionsortwithbuf(t_vars *v);
+
+void caller(t_vars *v, size_t command);
 
 void sa(t_vars *v);
 void sb(t_vars *v);

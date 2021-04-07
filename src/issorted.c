@@ -6,11 +6,11 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/17 21:30:27 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/03/30 09:27:18 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/06 15:16:32 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "../push_swap.h"
 
 int issorted(t_node *head)
 {
