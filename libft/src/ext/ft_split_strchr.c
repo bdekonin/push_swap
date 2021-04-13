@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/16 08:58:49 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/02/26 15:27:55 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 12:27:40 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_ext.h"
 
 static size_t	get_start(const char *src, const char *set, size_t i)
 {
@@ -48,10 +49,10 @@ static size_t	count_strings(const char *src, const char *set)
 		if (!ft_strchr(set, src[i]))
 		{
 			count++;
-			while (!ft_strchr(set, src[i]) && src[i] != '\0')
+			while (src[i] != '\0' && !ft_strchr(set, src[i]))
 				i++;
 		}
-		while (ft_strchr(set, src[i]))
+		while (src[i] != '\0' && ft_strchr(set, src[i]))
 			i++;
 	}
 	return (count);
@@ -72,7 +73,7 @@ static int	init_dst(char **dst, const char *src, const char *set, size_t size)
 		len = get_len(src, set, start);
 		dst[i] = ft_substr(src, start, len);
 		if (!dst[i])
-			return (ft_free_array((void **)dst, i));
+			return (ft_free2((void **)dst, i));
 		i++;
 	}
 	return (1);

@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/06 21:15:19 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/04 01:02:42 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 12:35:56 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_ext.h"
 
 /*
 **	ft_concat_array is the opposite of ft_split
@@ -58,6 +59,8 @@ char	*ft_concat_array(char **array, char *dl)
 	size_t	size;
 
 	size = ft_array_size(array);
+	if (size == 0)
+		return (NULL);
 	dst = ft_strdup(array[0]);
 	if (!dst)
 		return (NULL);

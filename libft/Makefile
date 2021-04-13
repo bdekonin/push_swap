@@ -6,14 +6,14 @@
 #    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/04 13:12:33 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/03/05 16:54:53 by lverdoes      ########   odam.nl          #
+#    Updated: 2021/04/07 11:55:36 by lverdoes      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-HEADERS = libft.h
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -pedantic -I.
+FLAGS	= -Wall -Wextra -Werror -I$(INCL)
+INCL	= includes/
 UNUSED	= -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
 
 MANDATORY =	\
@@ -52,24 +52,11 @@ MANDATORY =	\
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
 
-LST = \
-	ft_lstadd_back.c \
-	ft_lstadd_front.c \
-	ft_lstclear.c \
-	ft_lstdelone.c \
-	ft_lstfind.c \
-	ft_lstiter.c \
-	ft_lstlast.c \
-	ft_lstmap.c \
-	ft_lstnew.c \
-	ft_lstsize.c \
-
-EXT =	\
+EXT = \
 	ft_append.c \
 	ft_array_size.c \
 	ft_arraydup.c \
 	ft_atod.c \
-	ft_atoi_base.c \
 	ft_concat_array.c \
 	ft_counter.c \
 	ft_free_array.c \
@@ -98,6 +85,7 @@ GNL = \
 NODE = \
 	ft_node_add_back.c \
 	ft_node_add_front.c \
+	ft_node_combine.c \
 	ft_node_del_all.c \
 	ft_node_del_one.c \
 	ft_node_dup.c \
@@ -107,9 +95,9 @@ NODE = \
 	ft_node_insert_sort.c \
 	ft_node_is_sorted.c \
 	ft_node_iter.c \
+	ft_node_index.c \
 	ft_node_join.c \
 	ft_node_last.c \
-	ft_node_merge.c \
 	ft_node_new.c \
 	ft_node_number.c \
 	ft_node_remove_if.c \
@@ -119,57 +107,58 @@ NODE = \
 	ft_node_unlink.c \
 	ft_print_node_list.c
 
-SORT = \
-	ft_bubble_sort_int.c \
-	ft_bubble_sort_str.c \
-	ft_merge_sort_int.c \
-	ft_merge_sort_str.c
+DICT = \
+	ft_dict_clear.c \
+	ft_dict_del_one.c \
+	ft_dict_find.c \
+	ft_dict_new.c \
+	ft_dict_size.c
 
 SRC_DIRS = \
 	$(addprefix mandatory/, $(MANDATORY)) \
 	$(addprefix ext/, $(EXT)) \
 	$(addprefix gnl/, $(GNL)) \
-	$(addprefix lst/, $(LST)) \
 	$(addprefix node/, $(NODE)) \
-	$(addprefix sort/, $(SORT))
+	$(addprefix dict/, $(DICT))
 
 OBJ_DIRS = \
 	obj \
 	obj/mandatory \
 	obj/ext \
 	obj/gnl \
-	obj/lst \
 	obj/node \
-	obj/sort
-
-all: $(NAME)
+	obj/dict
 
 SRC	= $(addprefix src/, $(SRC_DIRS))
 OBJ = $(SRC:src/%.c=obj/%.o)
 
+all: $(NAME)
+
 $(NAME): $(OBJ)
-	@ar rcs $(NAME) $?
+	@ar rcs $(NAME) $(OBJ)
+	@echo "Created $@\x1b[1A\x1b[M"
 
 obj/%.o: src/%.c
 	@mkdir -p $(OBJ_DIRS)
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
+	@echo "Compiling libft/$<\x1b[1A\x1b[1M"
 
 .PHONY:	clean fclean re
 
 clean:
-	@/bin/rm -f $(OBJ)
-	@/bin/rm -f .DS_Store
-	@/bin/rm -f a.out
+	@/bin/rm -rf $(OBJ_DIRS)
+	@echo "Deleted libft/obj"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@/bin/rm -f *.a
-	@/bin/rm -rf $(OBJ_DIRS)
+	@/bin/rm -f .DS_Store
+	@echo "Deleted $(NAME)"
+	@echo ""
 
 re: fclean all
 
 main: all
 	$(CC) $(FLAGS) $(UNUSED) $(NAME) main.c utils/*.c
-	./a.out
+	@./a.out
 
 test: main

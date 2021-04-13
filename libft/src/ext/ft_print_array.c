@@ -6,11 +6,12 @@
 /*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/24 11:12:42 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/03/04 01:03:03 by lverdoes      ########   odam.nl         */
+/*   Updated: 2021/04/07 11:50:50 by lverdoes      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_ext.h"
 
 static size_t	get_magnitude(size_t num)
 {
