@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 16:34:11 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/08 15:11:28 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/13 17:44:19 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void rra(t_vars *v);
 void rrb(t_vars *v);
 void rrr(t_vars *v);
 
-void caller(t_vars *v, size_t command); // Calls Command (v, DEFINE command)
+void caller(t_vars *v, size_t command, int print); // Calls Command (v, DEFINE command)
 
 
 

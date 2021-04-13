@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/17 21:33:21 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/08 15:11:23 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/13 17:58:24 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,15 @@ void solver(t_vars *v)
 	// 	ft_bzero(&temp, sizeof(t_vars));
 	// 	temp.a = ft_node_dup(v->a, hyptydup, NULL);
 
-	// 	insertionsortwithbuf(&temp, i);
+	// 	insertionsortwithbuf(&temp, i, 0);
 	// 	if (temp.steps < steps || steps == 0)
 	// 	{
 	// 		bereik = i;
 	// 		steps = temp.steps;
 	// 	}
-	// 	dprintf(2, "[%d] - %d\n", i, (int)temp.steps);
-
+	// 	// dprintf(2, "[%d] - %d\n", i, (int)temp.steps);
 	// }
 
 	// dprintf(2, "Smallest bereik: [%d]", bereik);
-	insertionsortwithbuf(v, 30);
+	insertionsortwithbuf(v, 35, 1);
 }

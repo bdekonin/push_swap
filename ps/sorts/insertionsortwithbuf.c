@@ -6,13 +6,14 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/01 12:44:10 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/08 15:02:56 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/13 17:47:28 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
 /* insertion sort */
+int g_print;
 
 static int getSmallestNum(t_node *list)
 {
@@ -67,9 +68,9 @@ static void findNum(t_vars *v, int num, int buf)
 		x = getIndex(v->a, num);
 		y = ft_node_size(v->a) / 2;
 		if (x < y)
-			caller(v, RA);
+			caller(v, RA, g_print);
 		else
-			caller(v, RRA);
+			caller(v, RRA, g_print);
 	}
 }
 
@@ -92,26 +93,27 @@ static void findNumB(t_vars *v, int num)
 		}
 		y = ft_node_size(v->b) / 2;
 		if (x < y)
-			caller(v, RB);
+			caller(v, RB, g_print);
 		else
-			caller(v, RRB);
+			caller(v, RRB, g_print);
 	}
 }
 
-void insertionsortwithbuf(t_vars *v, int bereik)
+void insertionsortwithbuf(t_vars *v, int bereik, int print)
 {
+	g_print = print;
 	while (ft_node_size(v->a) > 1) // maybe 0
 	{
 		findNum(v, getSmallestNum(v->a), bereik);
 		if (issorted(v->a) && ft_atoi(v->a->content) > ft_atoi(v->b->content))
 			break ;
-		caller(v, PB);
+		caller(v, PB, g_print);
 	}
-	caller(v, PB);
+	caller(v, PB, g_print);
 	while (ft_node_size(v->b) > 0)
 	{
 		findNumB(v, getBiggestNum(v->b));
-		caller(v, PA);
+		caller(v, PA, g_print);
 	}
 }
 

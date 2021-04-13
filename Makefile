@@ -6,7 +6,7 @@
 #    By: bdekonin <bdekonin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/04/07 19:10:12 by bdekonin      #+#    #+#                  #
-#    Updated: 2021/04/08 15:09:06 by bdekonin      ########   odam.nl          #
+#    Updated: 2021/04/13 16:04:42 by bdekonin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,4 +32,5 @@ py: all
 arg: all
 	@./push_swap $($@)
 
-
+clean:
+	rm push_swap checker

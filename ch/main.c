@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 16:26:38 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/08 14:32:01 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/13 18:54:26 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 **  Checker.c
 */
 
-void readinput(t_vars *v)
+
+
+void	readinput(t_list *v)
 {
-	char *line;
-	
+	char	*line;
+
 	while (1)
 	{
-		// print_stacks(v, "");
 		if (get_next_line(STDIN_FILENO, &line) <= 0)
 			return ;
 		if (!ft_strncmp(line, "sa", 3))
@@ -47,18 +48,47 @@ void readinput(t_vars *v)
 			rrb(v);
 		else if (!ft_strncmp(line, "rrr", 4))
 			rrr(v);
+		free(line);
 	}
 }
 
+static void *createfunctionarray()
+{
+	void	(*p[11]) (t_vars *v);
+
+	p[SA] = sa;
+	p[SB] = sb;
+	p[SS] = ss;
+	
+	p[PA] = pa;
+	p[PB] = pb;
+
+	p[RA] = ra;
+	p[RB] = rb;
+	p[RR] = rr;
+
+	p[RRA] = rra;
+	p[RRB] = rrb;
+	p[RRR] = rrr;
+
+	return (p);
+}
+
+
 int main(int argc, char **argv)
 {
-	t_vars v;
-	ft_bzero(&v, sizeof(t_vars));
+
+	t_list v;
+
+	ft_bzero(&v, sizeof(t_list));
 	create_stacks(&v, argc, argv);
+	v.p = createfunctionarray();
+
+	v.p = NULL;
 
 	readinput(&v);
 
-	if (issorted(v.a) && ft_node_size(v.b) == 0)
+	if (issorted(v.vars.a) && ft_node_size(v.vars.b) == 0)
 		printf("[OK]\n");
 	else
 		printf("[KO]\n");

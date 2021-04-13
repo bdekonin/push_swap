@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 14:35:54 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/08 14:57:07 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/13 17:44:28 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void kaas(int *x,int *y) // swapper
 
 
 
-void caller(t_vars *v, size_t command)
+void caller(t_vars *v, size_t command, int print)
 {
 	void	(*p[11]) (t_vars *v);
 	p[0] = sa;
@@ -67,7 +67,7 @@ void caller(t_vars *v, size_t command)
 	name[9] = "rrb";
 	name[10] = "rrr";
 
-	if (PRINT2)
+	if (print != 0)
 		ft_putendl_fd(name[command], 1);
 	(*p[command])(v);
 	v->steps++;
