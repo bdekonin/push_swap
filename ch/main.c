@@ -6,19 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 16:26:38 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/19 10:48:39 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/20 13:48:39 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-/*
-**  Checker.c
-*/
-
-
-
-void	readinput(t_list *v)
+static int	readinput(t_list *v)
 {
 	char	*line;
 	int i;
@@ -40,6 +34,7 @@ void	readinput(t_list *v)
 		free(line);
 	}
 	free(line);
+	return (0);
 }
 
 static void createfunctionarray(t_list *v)
@@ -81,9 +76,18 @@ static void createstringarray(t_list *v)
 int main(int argc, char **argv)
 {
 	t_list v;
+	int ret;
 
 	ft_bzero(&v, sizeof(t_list));
-	create_stacks(&v.vars, argc, argv);
+	ret = create_stacks(&v.vars, argc, argv);
+	if (ret != 0)
+	{
+		ft_putendl_fd("Error\n", 1);
+		ft_node_del_all(&v.vars.a, free);
+		ft_node_del_all(&v.vars.b, free);
+		return (ret);
+	}
+	
 	createfunctionarray(&v);
 	createstringarray(&v);
 
@@ -96,4 +100,5 @@ int main(int argc, char **argv)
 	
 	ft_node_del_all(&v.vars.a, free);
 	ft_node_del_all(&v.vars.b, free);
+	return (0);
 }
