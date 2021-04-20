@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/17 21:33:21 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/13 17:58:24 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/19 08:50:19 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ void solver(t_vars *v)
 	// }
 
 	// dprintf(2, "Smallest bereik: [%d]", bereik);
-	insertionsortwithbuf(v, 35, 1);
+	insertionsortwithbuf(v, 30);
 }

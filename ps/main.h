@@ -23,7 +23,7 @@ void solver(t_vars *v);
 
 void insertionsort(t_vars *v);
 // void insertionsortwithbuf(t_vars *v);
-void insertionsortwithbuf(t_vars *v, int bereik, int print);
+void insertionsortwithbuf(t_vars *v, int bereik);
 
 
 

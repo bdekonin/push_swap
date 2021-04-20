@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 16:34:11 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/13 17:44:19 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/19 09:12:44 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,7 @@
 #include "libft/includes/libft.h"
 #include "libft/includes/ft_node.h"
 #include "libft/includes/get_next_line.h"
-
-typedef struct		s_vars
-{
-	t_node			*a;
-	t_node			*b;
-	size_t			steps;
-}					t_vars;
+#include "libft/includes/ft_ext.h"
 
 #define SA 0
 #define SB 1
@@ -46,6 +40,13 @@ typedef struct		s_vars
 
 #define PRINT 0
 #define PRINT2 1
+
+typedef struct		s_vars
+{
+	t_node			*a;
+	t_node			*b;
+	size_t			steps;
+}					t_vars;
 
 /*
 ** Operations
@@ -66,7 +67,7 @@ void rra(t_vars *v);
 void rrb(t_vars *v);
 void rrr(t_vars *v);
 
-void caller(t_vars *v, size_t command, int print); // Calls Command (v, DEFINE command)
+void caller(t_vars *v, size_t command); // Calls Command (v, DEFINE command)
 
 
 

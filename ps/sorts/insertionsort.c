@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/01 12:44:10 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/13 17:45:59 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/15 11:10:08 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ static void findNum(t_vars *v, int num)
 		x = getIndex(v->a, num);
 		y = ft_node_size(v->a) / 2;
 		if (x < y)
-			caller(v, RA, 1);
+			caller(v, RA);
 		else
-			caller(v, RRA, 1);
+			caller(v, RRA);
 	}
 }
 
@@ -66,11 +66,11 @@ void insertionsort(t_vars *v)
 		findNum(v, getSmallestNum(v->a));
 		if (issorted(v->a))
 			break ;
-		caller(v, PB, 1);
+		caller(v, PB);
 	}
 	while (ft_node_size(v->b) > 0)
 	{
-		caller(v, PA, 1);
+		caller(v, PA);
 	}
 }
 

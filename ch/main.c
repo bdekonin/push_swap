@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 16:26:38 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/13 18:54:26 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/19 10:48:39 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,70 +21,71 @@
 void	readinput(t_list *v)
 {
 	char	*line;
+	int i;
 
 	while (1)
 	{
+		i = 0;
 		if (get_next_line(STDIN_FILENO, &line) <= 0)
-			return ;
-		if (!ft_strncmp(line, "sa", 3))
-			sa(v);
-		else if (!ft_strncmp(line, "sb", 3))
-			sb(v);
-		else if (!ft_strncmp(line, "ss", 3))
-			ss(v);
-		else if (!ft_strncmp(line, "pa", 3))
-			pa(v);
-		else if (!ft_strncmp(line, "pb", 3))
-			pb(v);
-		else if (!ft_strncmp(line, "ra", 3))
-			ra(v);
-		else if (!ft_strncmp(line, "rb", 3))
-			rb(v);
-		else if (!ft_strncmp(line, "rr", 3))
-			rr(v);
-		else if (!ft_strncmp(line, "rra", 4))
-			rra(v);
-		else if (!ft_strncmp(line, "rrb", 4))
-			rrb(v);
-		else if (!ft_strncmp(line, "rrr", 4))
-			rrr(v);
+			break ;
+		while (i < OPERATIONS_MAX)
+		{
+			if (!ft_strcmp(line, v->a[i]))
+			{
+				(v->p[i] (&v->vars));
+				break ;
+			}
+			i++;
+		}
 		free(line);
 	}
+	free(line);
 }
 
-static void *createfunctionarray()
+static void createfunctionarray(t_list *v)
 {
-	void	(*p[11]) (t_vars *v);
-
-	p[SA] = sa;
-	p[SB] = sb;
-	p[SS] = ss;
+	v->p[SA] = sa;
+	v->p[SB] = sb;
+	v->p[SS] = ss;
 	
-	p[PA] = pa;
-	p[PB] = pb;
+	v->p[PA] = pa;
+	v->p[PB] = pb;
 
-	p[RA] = ra;
-	p[RB] = rb;
-	p[RR] = rr;
+	v->p[RA] = ra;
+	v->p[RB] = rb;
+	v->p[RR] = rr;
 
-	p[RRA] = rra;
-	p[RRB] = rrb;
-	p[RRR] = rrr;
-
-	return (p);
+	v->p[RRA] = rra;
+	v->p[RRB] = rrb;
+	v->p[RRR] = rrr;
 }
 
+static void createstringarray(t_list *v)
+{
+	v->a[SA] = "sa";
+	v->a[SB] = "sb";
+	v->a[SS] = "ss";
+	
+	v->a[PA] = "pa";
+	v->a[PB] = "pb";
+
+	v->a[RA] = "ra";
+	v->a[RB] = "rb";
+	v->a[RR] = "rr";
+
+	v->a[RRA] = "rra";
+	v->a[RRB] = "rrb";
+	v->a[RRR] = "rrr";
+}
 
 int main(int argc, char **argv)
 {
-
 	t_list v;
 
 	ft_bzero(&v, sizeof(t_list));
-	create_stacks(&v, argc, argv);
-	v.p = createfunctionarray();
-
-	v.p = NULL;
+	create_stacks(&v.vars, argc, argv);
+	createfunctionarray(&v);
+	createstringarray(&v);
 
 	readinput(&v);
 
@@ -92,4 +93,7 @@ int main(int argc, char **argv)
 		printf("[OK]\n");
 	else
 		printf("[KO]\n");
+	
+	ft_node_del_all(&v.vars.a, free);
+	ft_node_del_all(&v.vars.b, free);
 }

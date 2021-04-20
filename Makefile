@@ -6,7 +6,7 @@
 #    By: bdekonin <bdekonin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/04/07 19:10:12 by bdekonin      #+#    #+#                  #
-#    Updated: 2021/04/13 16:04:42 by bdekonin      ########   odam.nl          #
+#    Updated: 2021/04/19 09:53:17 by bdekonin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ py: all
 	python3 tester/pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 
 arg: all
-	@./push_swap $($@)
+	@./push_swap $($@) | ./checker $($@)
+	@./push_swap $($@) | wc -l
 
 clean:
 	rm push_swap checker
