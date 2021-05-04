@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/17 21:33:21 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/30 13:08:59 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/04 16:01:57 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void three_numbers(t_vars *v);
 void two_numbers(t_vars *v);
+void jaja(t_vars *v, int bereik);
 
 void solver(t_vars *v)
 {
@@ -22,5 +23,5 @@ void solver(t_vars *v)
 	else if (ft_node_size(v->a) == 3)
 		three_numbers(v);
 	else
-		insertionsortwithbuf(v, 30);
+		insertionsortwithbuf(v, 15);
 }

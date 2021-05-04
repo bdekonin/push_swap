@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/29 13:40:57 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 14:50:45 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/04 15:39:40 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static int get_middle_num(t_node *list)
 	
 	node = list;
 	smallest = get_smallest_num(list);
-	biggest = get_smallest_num(list);
+	biggest = get_biggest_num(list);
 	while (node)
 	{
 		current = ft_atoi(node->content);
 		if (current != smallest && current != biggest)
-			return (ft_atoi(node->content));
+			return (current);
 		node = node->next;
 	}
 	return (-1);
@@ -42,15 +42,45 @@ static int get_middle_num(t_node *list)
 void three_numbers(t_vars *v)
 {
 	int smallest;
+	int middle;
 	int biggest;
-	int current;
+	int head;
+	int last;
 	
 	smallest = get_smallest_num(v->a);
-	biggest = get_smallest_num(v->b);
-	current = ft_atoi(v->a->content);
-	
-	// if (smallest == ft_atoi())
-	// {
-		
-	// }
+	middle = get_middle_num(v->a);
+	biggest = get_biggest_num(v->a);
+
+	head = ft_atoi(v->a->content);
+	last = ft_atoi(ft_node_last(v->a)->content);
+	if (head == smallest && last == middle)
+	{
+		// rra sa
+		caller(v, RRA);
+		caller(v, SA);
+	}
+	else if (head == middle && last == biggest)
+	{
+		// sa
+		caller(v, SA);
+	}
+	else if (head == middle && last == smallest)
+	{
+		// rra
+		caller(v, RRA);
+	}
+	else if (head == biggest && last == smallest)
+	{
+		// ra sa
+		caller(v, RA);
+		caller(v, SA);
+	}
+	else if (head == biggest && last == middle)
+	{
+		// ra
+		caller(v, RA);
+	}
+	else
+	 	// sorted
+	return ;
 }
