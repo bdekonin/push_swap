@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_lstlast_bonus.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2019/11/18 14:38:32 by bdekonin      #+#    #+#                 */
+/*   Updated: 2020/05/15 22:05:43 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+t_list	*ft_lstlast(t_list *lst)
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
-
-#endif // MAIN_H
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
+}

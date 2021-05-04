@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_putchar_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2019/11/01 15:07:58 by bdekonin      #+#    #+#                 */
+/*   Updated: 2020/04/23 10:52:00 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
+#include <unistd.h>
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+int		ft_putchar_fd(char c, int fd)
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
-
-#endif // MAIN_H
+	return (write(fd, &c, 1));
+}

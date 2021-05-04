@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   get_next_line.h                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2019/11/05 08:07:31 by bdekonin      #+#    #+#                 */
+/*   Updated: 2020/04/12 14:18:00 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include "../header.h"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 128
+# endif
 
-# define OPERATIONS_MAX 11
+# include <unistd.h>
+# include <limits.h>
+# include <stdlib.h>
 
-typedef struct s_struct
-{
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
+int		get_next_line(int fd, char **line);
 
-#endif // MAIN_H
+#endif

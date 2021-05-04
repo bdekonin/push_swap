@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_lstiter_bonus.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2019/11/27 15:09:09 by bdekonin      #+#    #+#                 */
+/*   Updated: 2020/05/15 22:06:18 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
-
-#endif // MAIN_H
+	if (!f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}

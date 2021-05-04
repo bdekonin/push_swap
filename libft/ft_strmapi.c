@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_strmapi.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2019/11/13 13:29:11 by bdekonin      #+#    #+#                 */
+/*   Updated: 2020/04/23 12:47:01 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
+	unsigned int	i;
+	char			*str;
 
-#endif // MAIN_H
+	i = 0;
+	if (!s)
+		return (NULL);
+	str = malloc(sizeof(char) * (ft_strlen((char*)s) + 1));
+	if (!str)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_node_number.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2020/11/28 00:19:16 by bdekonin      #+#    #+#                 */
+/*   Updated: 2021/04/29 12:45:25 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "../header.h"
+/*
+**	Return the node at index position number.
+**	For number = 0, head is returned.
+**	If number is out range, NULL is returned.
+*/
 
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+t_node	*ft_node_number(t_node *node, size_t number)
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
+	t_node	*tmp;
+	size_t	i;
 
-#endif // MAIN_H
+	tmp = node;
+	i = 0;
+	while (tmp)
+	{
+		if (i == number)
+			return (tmp);
+		i++;
+		tmp = tmp->next;
+	}
+	return (NULL);
+}

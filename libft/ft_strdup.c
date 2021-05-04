@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_strdup.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2019/11/06 10:31:37 by bdekonin      #+#    #+#                 */
+/*   Updated: 2020/07/07 22:43:46 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
+#include <string.h>
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+char		*ft_strdup(const char *s1)
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
+	int		len;
+	char	*s2;
 
-#endif // MAIN_H
+	len = ft_strlen(s1);
+	s2 = ft_calloc(len + 1, sizeof(char));
+	if (!s2)
+		return (NULL);
+	ft_memcpy(s2, s1, len);
+	return (s2);
+}

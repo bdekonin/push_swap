@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_node_insert_sort.c                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2020/12/01 08:31:48 by bdekonin      #+#    #+#                 */
+/*   Updated: 2021/04/29 12:45:25 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+void	ft_node_insert_sort(t_node **head, t_node *node, int (*cmp)())
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
+	t_node	*tmp;
 
-#endif // MAIN_H
+	tmp = *head;
+	while (tmp)
+	{
+		if (cmp(node->content, tmp->content) <= 0)
+		{
+			ft_node_insert_before(head, node, tmp);
+			return ;
+		}
+		tmp = tmp->next;
+	}
+	ft_node_add_back(head, node);
+}

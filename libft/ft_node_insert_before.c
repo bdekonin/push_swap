@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_node_insert_before.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2020/11/27 23:35:52 by bdekonin      #+#    #+#                 */
+/*   Updated: 2021/04/29 12:45:25 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+void	ft_node_insert_before(t_node **head, t_node *node, t_node *before_this)
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
-
-#endif // MAIN_H
+	if (!before_this)
+	{
+		ft_node_add_back(head, node);
+		return ;
+	}	
+	if (before_this == *head)
+	{
+		ft_node_add_front(head, node);
+		return ;
+	}
+	node->prev = before_this->prev;
+	node->next = before_this;
+	before_this->prev = node;
+	node->prev->next = node;
+}

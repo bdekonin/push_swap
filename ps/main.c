@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 13:23:22 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/20 13:30:19 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/30 13:03:11 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,10 @@ int main(int argc, char **argv)
 	ret = create_stacks(&v, argc, argv);
 	if (ret != 0)
 	{
-		ft_putendl_fd("Error\n", 1);
-		ft_node_del_all(&v.a, free);
-		ft_node_del_all(&v.b, free);
-		return (ret);
+		ft_putendl_fd("Error", 1);
+		return(free_stacks(&v.a, &v.b, ret));
 	}
-
 	solver(&v);
-	ft_node_del_all(&v.a, free);
-	ft_node_del_all(&v.b, free);
+	free_stacks(&v.a, &v.b, 0);
 	return (0);
 }

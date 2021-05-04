@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 16:34:11 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/19 09:12:44 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/29 14:09:26 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include "libft/includes/libft.h"
-#include "libft/includes/ft_node.h"
-#include "libft/includes/get_next_line.h"
-#include "libft/includes/ft_ext.h"
+// #include "libft/includes/libft.h"
+// #include "libft/includes/ft_node.h"
+// #include "libft/includes/get_next_line.h"
+// #include "libft/includes/ft_ext.h"
+
+#include "libft/libft.h"
 
 #define SA 0
 #define SB 1
@@ -78,7 +80,9 @@ void caller(t_vars *v, size_t command); // Calls Command (v, DEFINE command)
 int		issorted(t_node*head);
 void	print_stacks(t_vars *v, char *next_cmd);
 int		create_stacks(t_vars *v, int argc, char **argv);
-
+int		free_stacks(t_node **a, t_node **b, int ret);
+int		get_biggest_num(t_node *list);
+int		get_smallest_num(t_node *list);
 
 
 

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2020/06/24 14:25:47 by bdekonin      #+#    #+#                 */
+/*   Updated: 2020/06/25 15:18:05 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-#endif // MAIN_H
+	str1 = (unsigned char*)s1;
+	str2 = (unsigned char*)s2;
+	i = 0;
+	while (str1[i] == str2[i] && str1[i] && str2[i])
+		i++;
+	return (str1[i] - str2[i]);
+}

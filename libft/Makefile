@@ -3,162 +3,69 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: lverdoes <lverdoes@student.codam.nl>         +#+                      #
+#    By: bdekonin <bdekonin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2020/12/04 13:12:33 by lverdoes      #+#    #+#                  #
-#    Updated: 2021/04/07 11:55:36 by lverdoes      ########   odam.nl          #
+#    Created: 2019/10/29 12:24:22 by bdekonin      #+#    #+#                  #
+#    Updated: 2021/04/29 12:44:56 by bdekonin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libft.a
-CC		= gcc
-FLAGS	= -Wall -Wextra -Werror -I$(INCL)
-INCL	= includes/
-UNUSED	= -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function
+NOCOLOR = \033[0m
+GREEN = \033[92m
 
-MANDATORY =	\
-	ft_memset.c \
-	ft_bzero.c \
-	ft_memcpy.c \
-	ft_memccpy.c \
-	ft_memmove.c \
-	ft_memchr.c \
-	ft_memcmp.c \
-	ft_strlen.c \
-	ft_strlcpy.c \
-	ft_strlcat.c \
-	ft_strchr.c \
-	ft_strrchr.c \
-	ft_strnstr.c \
-	ft_strncmp.c \
-	ft_atoi.c \
-	ft_isalpha.c \
-	ft_isdigit.c \
-	ft_isalnum.c \
-	ft_isascii.c \
-	ft_isprint.c \
-	ft_toupper.c \
-	ft_tolower.c \
-	ft_calloc.c \
-	ft_strdup.c \
-	ft_substr.c \
-	ft_strjoin.c \
-	ft_strtrim.c \
-	ft_split.c \
-	ft_itoa.c \
-	ft_strmapi.c \
-	ft_putchar_fd.c \
-	ft_putstr_fd.c \
-	ft_putendl_fd.c \
-	ft_putnbr_fd.c
+NAME = libft.a
 
-EXT = \
-	ft_append.c \
-	ft_array_size.c \
-	ft_arraydup.c \
-	ft_atod.c \
-	ft_concat_array.c \
-	ft_counter.c \
-	ft_free_array.c \
-	ft_intdup.c \
-	ft_iswhitespace.c \
-	ft_print_array.c \
-	ft_print_int_array.c \
-	ft_realloc.c \
-	ft_replace.c \
-	ft_split_strchr.c \
-	ft_split_strnstr.c \
-	ft_str_contains_none.c \
-	ft_str_contains_only.c \
-	ft_str_to_lower.c \
-	ft_str_to_upper.c \
-	ft_strcmp.c \
-	ft_strxjoin.c \
-	ft_substrlen.c \
-	ft_swap.c \
-	ft_unique_chars.c
+EXTRA_SRC = get_next_line.c \
+ft_swap_bonus.c ft_strsearch_bonus.c \
+ft_wordcount_bonus.c ft_counter_bonus.c ft_intlen_bonus.c ft_abs_bonus.c \
+ft_free_array_bonus.c ft_charsearch_bonus.c ft_strcat_bonus.c \
+ft_str_tolower_bonus.c ft_split_sep_bonus.c ft_strcmp_bonus.c \
+ft_getline_bonus.c ft_iserrno_bonus.c ft_strexpand_bonus.c \
+ft_node_add_back.c ft_node_add_front.c ft_node_combine.c \
+ft_node_del_all.c ft_node_del_one.c ft_node_dup.c \
+ft_node_find.c ft_node_insert_after.c ft_node_insert_before.c \
+ft_node_insert_sort.c ft_node_is_sorted.c ft_node_iter.c \
+ft_node_index.c ft_node_join.c ft_node_last.c \
+ft_node_new.c ft_node_number.c ft_node_remove_if.c \
+ft_node_remove_one.c ft_node_size.c \
+ft_node_unlink.c ft_print_node_list.c
 
-GNL = \
-	ft_getline.c \
-	get_next_line.c
 
-NODE = \
-	ft_node_add_back.c \
-	ft_node_add_front.c \
-	ft_node_combine.c \
-	ft_node_del_all.c \
-	ft_node_del_one.c \
-	ft_node_dup.c \
-	ft_node_find.c \
-	ft_node_insert_after.c \
-	ft_node_insert_before.c \
-	ft_node_insert_sort.c \
-	ft_node_is_sorted.c \
-	ft_node_iter.c \
-	ft_node_index.c \
-	ft_node_join.c \
-	ft_node_last.c \
-	ft_node_new.c \
-	ft_node_number.c \
-	ft_node_remove_if.c \
-	ft_node_remove_one.c \
-	ft_node_size.c \
-	ft_node_sort.c \
-	ft_node_unlink.c \
-	ft_print_node_list.c
+SRCS = $(EXTRA_SRC) ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
+ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c \
+ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
+ft_memmove.c ft_memset.c ft_putchar_fd.c \
+ft_putendl_fd.c ft_putnbr_fd.c \
+ft_putstr_fd.c ft_split.c ft_strchr.c \
+ft_strdup.c	ft_strjoin.c ft_strlcat.c ft_strlcpy.c \
+ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
+ft_strrchr.c ft_substr.c ft_tolower.c ft_toupper.c \
+ft_strtrim.c \
+ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c \
+ft_lstlast_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c \
+ft_lstdelone_bonus.c ft_lstiter_bonus.c ft_lstclear_bonus.c \
+ft_lstmap_bonus.c
 
-DICT = \
-	ft_dict_clear.c \
-	ft_dict_del_one.c \
-	ft_dict_find.c \
-	ft_dict_new.c \
-	ft_dict_size.c
+OFILES = $(SRCS:.c=.o)
 
-SRC_DIRS = \
-	$(addprefix mandatory/, $(MANDATORY)) \
-	$(addprefix ext/, $(EXT)) \
-	$(addprefix gnl/, $(GNL)) \
-	$(addprefix node/, $(NODE)) \
-	$(addprefix dict/, $(DICT))
-
-OBJ_DIRS = \
-	obj \
-	obj/mandatory \
-	obj/ext \
-	obj/gnl \
-	obj/node \
-	obj/dict
-
-SRC	= $(addprefix src/, $(SRC_DIRS))
-OBJ = $(SRC:src/%.c=obj/%.o)
+INCLUDES = libft.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@ar rcs $(NAME) $(OBJ)
-	@echo "Created $@\x1b[1A\x1b[M"
+$(NAME): $(OFILES) $(INCLUDES)
+	@ar rcs $(NAME) $?
+	@echo "$(GREEN)[libft] - Created a Library and Object Files.$(NOCOLOR)"
 
-obj/%.o: src/%.c
-	@mkdir -p $(OBJ_DIRS)
-	@$(CC) $(FLAGS) -c $< -o $@
-	@echo "Compiling libft/$<\x1b[1A\x1b[1M"
-
-.PHONY:	clean fclean re
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -c $<
 
 clean:
-	@/bin/rm -rf $(OBJ_DIRS)
-	@echo "Deleted libft/obj"
+	@/bin/rm -f $(OFILES)
+	@/bin/rm -f a.out
+	@echo "$(GREEN)[libft] - Removed All Object Files.$(NOCOLOR)"
 
-fclean: clean
+fclean:    clean
 	@/bin/rm -f $(NAME)
-	@/bin/rm -f .DS_Store
-	@echo "Deleted $(NAME)"
-	@echo ""
+	@echo "$(GREEN)[libft] - Removed .a file and all .o files.$(NOCOLOR)"
 
 re: fclean all
-
-main: all
-	$(CC) $(FLAGS) $(UNUSED) $(NAME) main.c utils/*.c
-	@./a.out
-
-test: main

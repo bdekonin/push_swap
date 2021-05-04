@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_strlcpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2019/11/26 14:16:08 by bdekonin      #+#    #+#                 */
+/*   Updated: 2020/06/25 15:41:55 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
+	size_t i;
+	size_t j;
 
-#endif // MAIN_H
+	i = 0;
+	j = 0;
+	if (dst == 0 || src == 0)
+		return (0);
+	while (src[j] != '\0')
+	{
+		if (i < dstsize - 1 && dstsize > 0)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		j++;
+	}
+	if (dstsize == 0)
+		return (j);
+	dst[i] = '\0';
+	return (j);
+}

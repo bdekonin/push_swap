@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_strlcat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/08 10:27:12 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:59:23 by bdekonin      ########   odam.nl         */
+/*   Created: 2019/11/08 16:02:37 by bdekonin      #+#    #+#                 */
+/*   Updated: 2020/04/23 12:43:16 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "libft.h"
 
-# include "../header.h"
-
-# define OPERATIONS_MAX 11
-
-typedef struct s_struct
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
-	char	*a[OPERATIONS_MAX];
-	t_vars	vars;
-}	t_struct;
+	size_t i;
+	size_t j;
 
-#endif // MAIN_H
+	i = ft_strlen(dst);
+	j = 0;
+	if (i < dstsize)
+	{
+		while (j < dstsize - i - 1 && src[j] != '\0')
+		{
+			dst[i + j] = src[j];
+			j++;
+		}
+		dst[i + j] = '\0';
+	}
+	while (src[j] != '\0')
+		j++;
+	if (dstsize <= i)
+		return (dstsize + j);
+	return (i + j);
+}

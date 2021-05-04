@@ -6,13 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 16:26:38 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/20 13:48:39 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/04/29 13:23:23 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-static int	readinput(t_list *v)
+static int	readinput(t_struct *v)
 {
 	char	*line;
 	int i;
@@ -37,7 +37,7 @@ static int	readinput(t_list *v)
 	return (0);
 }
 
-static void createfunctionarray(t_list *v)
+static void createfunctionarray(t_struct *v)
 {
 	v->p[SA] = sa;
 	v->p[SB] = sb;
@@ -55,7 +55,7 @@ static void createfunctionarray(t_list *v)
 	v->p[RRR] = rrr;
 }
 
-static void createstringarray(t_list *v)
+static void createstringarray(t_struct *v)
 {
 	v->a[SA] = "sa";
 	v->a[SB] = "sb";
@@ -75,30 +75,27 @@ static void createstringarray(t_list *v)
 
 int main(int argc, char **argv)
 {
-	t_list v;
+	t_struct v;
+	
 	int ret;
 
-	ft_bzero(&v, sizeof(t_list));
+	ft_bzero(&v, sizeof(t_struct));
 	ret = create_stacks(&v.vars, argc, argv);
 	if (ret != 0)
 	{
-		ft_putendl_fd("Error\n", 1);
-		ft_node_del_all(&v.vars.a, free);
-		ft_node_del_all(&v.vars.b, free);
-		return (ret);
+		ft_putendl_fd("Error", 1);
+		return (free_stacks(&v.vars.a, &v.vars.b, ret));
 	}
 	
 	createfunctionarray(&v);
 	createstringarray(&v);
-
 	readinput(&v);
 
 	if (issorted(v.vars.a) && ft_node_size(v.vars.b) == 0)
 		printf("[OK]\n");
 	else
 		printf("[KO]\n");
-	
-	ft_node_del_all(&v.vars.a, free);
-	ft_node_del_all(&v.vars.b, free);
+
+	free_stacks(&v.vars.a, &v.vars.b, 0);
 	return (0);
 }
