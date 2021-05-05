@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/01 12:44:10 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/04 16:09:46 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/05 16:15:13 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int getIndex(t_node *h, int num)
 	}
 	return (-1);
 }
+
 static void findNum(t_vars *v, int num, int buf)
 {
 	int x;
@@ -37,6 +38,8 @@ static void findNum(t_vars *v, int num, int buf)
 	while (1)
 	{
 		atoi = ft_atoi(v->a->content);
+		if (num == -2147483648)
+			return ;
 		if ((num - buf) <= atoi && (num + buf) >= atoi)
 			return ;
 		x = getIndex(v->a, num);
@@ -60,15 +63,8 @@ static void findNumB(t_vars *v, int num)
 		if (atoi == num)
 			return ;
 		x = getIndex(v->b, num);
-		if (x == -1)
-		{
-			printf("wtf gebeurt hier\n");
-			exit(1);
-		}
 		if (v->b->next && ft_atoi(v->b->next->content) == num)
-		{
 			caller(v, SB);
-		}
 		else
 		{
 			y = ft_node_size(v->b) / 2;
@@ -82,7 +78,9 @@ static void findNumB(t_vars *v, int num)
 
 void insertionsortwithbuf(t_vars *v, int bereik)
 {
-	while (ft_node_size(v->a) > 1) // maybe 0
+	if (issorted(v->a))
+		return ;
+	while (ft_node_size(v->a) > 1)
 	{
 		findNum(v, get_smallest_num(v->a), bereik);
 		if (issorted(v->a) && ft_atoi(v->a->content) > ft_atoi(v->b->content))

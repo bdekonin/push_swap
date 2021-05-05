@@ -6,84 +6,46 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 14:35:54 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/15 11:09:11 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/05 16:34:50 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-static t_node* ft_lstgetbefore(t_node *head, t_node*before)
-{
-	while (head)
-	{
-		if (head->next == before)
-			return (head);
-		head = head->next;
-	}
-	return (NULL);
-}
-
-static void kaas(int *x,int *y) // swapper
+static void ft_inswap(int *x,int *y) // swapper
 {
     int t;
-     t   = *x;
+
+    t   = *x;
     *x   = *y;
     *y   =  t;
 }
 
-
-
 void caller(t_vars *v, size_t command)
 {
-	void	(*p[11]) (t_vars *v);
-	p[0] = sa;
-	p[1] = sb;
-	p[2] = ss;
+	t_struct s;
 
-	p[3] = pa;
-	p[4] = pb;
-	
-	p[5] = ra;
-	p[6] = rb;
-	p[7] = rr;
-	
-	p[8] = rra;
-	p[9] = rrb;
-	p[10] = rrr;
+	ft_bzero(&s, sizeof(t_struct));
+	createfunctionarray(&s);
+	createstringarray(&s);
 
-	char *name[11];
-	name[0] = "sa";
-	name[1] = "sb";
-	name[2] = "ss";
- 
-	name[3] = "pa"; 
-	name[4] = "pb";
- 	
-	name[5] = "ra";
-	name[6] = "rb";
-	name[7] = "rr";
-	
-	name[8] = "rra";
-	name[9] = "rrb";
-	name[10] = "rrr";
-
-	ft_putendl_fd(name[command], 1);
-	(*p[command])(v);
-	v->steps++;
+	ft_putendl_fd(s.a[command], 1);
+	(*s.p[command])(v);
 }
 
 void sa(t_vars *v) // swap a - swap the first 2 elements at the top of stack a
 {
 	if (!v->a || ft_node_size(v->a) == 1)
 		return ;
-	kaas(v->a->content, v->a->next->content);
+	ft_inswap(v->a->content, v->a->next->content);
 }
 void sb(t_vars *v) // swap b - swap the first 2 elements at the top of stack b
 {
 	if (!v->b || ft_node_size(v->b) == 1)
 		return ;
-	kaas(v->b->content, v->b->next->content);
+	ft_inswap(v->b->content, v->b->next->content);
 }
+
 void ss(t_vars *v) // sa and sb at the same time.
 {
 	sa(v);

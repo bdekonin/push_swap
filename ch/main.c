@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 16:26:38 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/04 15:23:33 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/05 16:28:50 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,36 +40,6 @@ static int	readinput(t_struct *v)
 	return (ret);
 }
 
-static void	createfunctionarray(t_struct *v)
-{
-	v->p[SA] = sa;
-	v->p[SB] = sb;
-	v->p[SS] = ss;
-	v->p[PA] = pa;
-	v->p[PB] = pb;
-	v->p[RA] = ra;
-	v->p[RB] = rb;
-	v->p[RR] = rr;
-	v->p[RRA] = rra;
-	v->p[RRB] = rrb;
-	v->p[RRR] = rrr;
-}
-
-static void	createstringarray(t_struct *v)
-{
-	v->a[SA] = "sa";
-	v->a[SB] = "sb";
-	v->a[SS] = "ss";
-	v->a[PA] = "pa";
-	v->a[PB] = "pb";
-	v->a[RA] = "ra";
-	v->a[RB] = "rb";
-	v->a[RR] = "rr";
-	v->a[RRA] = "rra";
-	v->a[RRB] = "rrb";
-	v->a[RRR] = "rrr";
-}
-
 int	main(int argc, char **argv)
 {
 	t_struct	v;
@@ -77,9 +47,10 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&v, sizeof(t_struct));
 	ret = create_stacks(&v.vars, argc, argv);
-	if (ret != 0)
+	if (ret != 1)
 	{
-		ft_putendl_fd("Error", 1);
+		if (argc != 1)
+			ft_putendl_fd("Error", 1);
 		free_stacks_and_exit(&v.vars.a, &v.vars.b, EXIT_FAILURE);
 	}
 	createfunctionarray(&v);

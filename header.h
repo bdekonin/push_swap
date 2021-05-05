@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/07 16:34:11 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/04 15:12:50 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/05 16:35:12 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,21 @@
 #define RRB 9
 #define RRR 10
 
-#define PRINT 0
-#define PRINT2 1
+# define OPERATIONS_MAX 11
 
 typedef struct		s_vars
 {
 	t_node			*a;
 	t_node			*b;
-	size_t			steps;
 }					t_vars;
+
+typedef struct s_struct
+{
+	void	(*p[OPERATIONS_MAX + 1])(t_vars *v);
+	char	*a[OPERATIONS_MAX];
+	t_vars	vars;
+}	t_struct;
+
 
 /*
 ** Operations
@@ -79,6 +85,8 @@ int		free_stacks(t_node **a, t_node **b, int ret);
 int		free_stacks_and_exit(t_node **a, t_node **b, int ret);
 int		get_biggest_num(t_node *list);
 int		get_smallest_num(t_node *list);
+void    createfunctionarray(t_struct *v);
+void	createstringarray(t_struct *v);
 
 
 

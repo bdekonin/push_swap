@@ -6,41 +6,63 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 10:38:19 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/20 13:20:36 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/05 16:15:09 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-# define BAD 1 //
-# define GOOD 0
-# define ERROR -1
-
-static int error(t_vars *v, int ret)
-{
-	ft_node_del_all(&v->a, free);
-	ft_node_del_all(&v->b, free);
-	return (ret);
-}
-
 static int checkduplicate(t_vars *v)
 {
 	t_node *one;
 	t_node *two;
+	double n;
 
 	one = v->a;
 	while (one)
 	{
 		two = one->next;
+		n  = ft_atod(one->content);
+		if (n > INT_MAX || n < INT_MIN)
+    		return (0);
 		while (two)
 		{
 			if (!ft_strcmp(one->content, two->content))
-				return (BAD);
+				return (0);
 			two = two->next;
 		}
 		one = one->next;
 	}
-	return (GOOD);
+	return (1);
+}
+
+static int containsnumbers(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (i == 0 && str[i] == '-' && ft_isdigit(str[i + 1]))
+			;
+		else if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int addnode(char *string, t_node **a, t_node **b)
+{
+	t_node *temp;
+
+	if (!containsnumbers(string))
+		return (0);
+	temp = ft_node_new(string);
+	if (!temp)
+		return (0);
+	ft_node_add_back(a, temp);
+	return (1);
 }
 
 int create_stacks(t_vars *v, int argc, char **argv)
@@ -52,23 +74,24 @@ int create_stacks(t_vars *v, int argc, char **argv)
 	i = 1;
 	array = NULL;
 	if (argc == 1)
-		return (ERROR);
+		return (0);
 	while (argv[i])
 	{
 		j = 0;
 		array = ft_split(argv[i], ' ');
 		if (!array)
-			return (error(v, ERROR));
+			return (0);
 		while (array[j])
 		{
-			ft_node_add_back(&v->a, ft_node_new(array[j]));
+			if (!addnode(array[j], &v->a, &v->b))
+				return (0);
 			j++;
 		}
 		free(array);
 		i++;
 	}
 	
-	if (checkduplicate(v) == BAD)
-		return (error(v, BAD));
-	return (GOOD);
+	if (!checkduplicate(v))
+		return (0);
+	return (1);
 }

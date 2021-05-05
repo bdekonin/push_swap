@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   display_stacks.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lverdoes <lverdoes@student.codam.nl>         +#+                     */
+/*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/28 14:28:25 by lverdoes      #+#    #+#                 */
-/*   Updated: 2021/04/07 16:45:56 by bdekonin      ########   odam.nl         */
+/*   Created: 2021/03/28 14:28:25 by bdekonin      #+#    #+#                 */
+/*   Updated: 2021/05/05 16:11:00 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_stacks(t_vars *v, char *next_cmd)
 	n_a = v->a;
 	n_b = v->b;
 	// usleep(850000);
-	dprintf(2, "\E[H\E[2J");
+	// dprintf(2, "\E[H\E[2J");
 	dprintf(2, "           stack A         stack B\n");
 	dprintf(2, "cmd:[%s]\n", next_cmd);
 	while (n_a || n_b)
