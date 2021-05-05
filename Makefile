@@ -6,7 +6,7 @@
 #    By: bdekonin <bdekonin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/04/07 19:10:12 by bdekonin      #+#    #+#                  #
-#    Updated: 2021/05/05 17:57:38 by bdekonin      ########   odam.nl          #
+#    Updated: 2021/05/05 18:03:00 by bdekonin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ LIBFT = ./libft/libft.a
 OFILES_PS = $(SRC_PS:.c=.o)
 OFILES_CH = $(SRC_CH:.c=.o)
 
-FLAGS = 
+FLAGS = -Wall -Werror -Wextra
 
 all: $(PS) $(CH)
 
@@ -50,11 +50,15 @@ $(LIBFT):
 	make -c libft
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $<
+	gcc -Ilibft -c $< -o $@
 
 clean:
 	@/bin/rm -f $(OFILES_PS)
 	@/bin/rm -f $(OFILES_CH)
+
+fclean: clean
+	@/bin/rm -f $(PS)
+	@/bin/rm -f $(CH)	
 
 
 
