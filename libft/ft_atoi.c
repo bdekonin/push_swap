@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 14:18:39 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/23 10:32:05 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:13:28 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(const char *str)
 {
-	long long int ans;
-	long long int check;
+	long long int	ans;
+	long long int	check;
 
 	ans = 0;
 	check = 1;

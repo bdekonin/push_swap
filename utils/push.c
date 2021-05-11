@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstclear_bonus.c                                :+:    :+:            */
+/*   push.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/27 15:25:54 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/11 13:18:59 by bdekonin      ########   odam.nl         */
+/*   Created: 2021/05/11 14:31:29 by bdekonin      #+#    #+#                 */
+/*   Updated: 2021/05/11 14:35:42 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../header.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	pa(t_vars *v)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
-	if (!lst)
+	if (!v->b)
 		return ;
-	if (del)
-	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			*lst = tmp;
-		}
-	}
-	*lst = NULL;
+	tmp = v->b;
+	ft_node_unlink(&v->b, v->b);
+	ft_node_add_front(&v->a, tmp);
+}
+
+void	pb(t_vars *v)
+{
+	t_node	*tmp;
+
+	if (!v->a)
+		return ;
+	tmp = v->a;
+	ft_node_unlink(&v->a, v->a);
+	ft_node_add_front(&v->b, tmp);
 }

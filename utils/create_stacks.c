@@ -6,25 +6,25 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 10:38:19 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/10 21:34:45 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 14:28:18 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-static int checkduplicate(t_vars *v)
+static int	checkduplicate(t_vars *v)
 {
-	t_node *one;
-	t_node *two;
-	double n;
+	t_node	*one;
+	t_node	*two;
+	double	n;
 
 	one = v->a;
 	while (one)
 	{
 		two = one->next;
-		n  = ft_atod(one->content);
+		n = ft_atod(one->content);
 		if (n > INT_MAX || n < INT_MIN)
-    		return (0);
+			return (0);
 		while (two)
 		{
 			if (!ft_strcmp(one->content, two->content))
@@ -36,9 +36,9 @@ static int checkduplicate(t_vars *v)
 	return (1);
 }
 
-static int containsnumbers(char *str)
+static int	containsnumbers(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -52,9 +52,9 @@ static int containsnumbers(char *str)
 	return (1);
 }
 
-static int addnode(char *string, t_node **a)
+static int	addnode(char *string, t_node **a)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	if (!containsnumbers(string))
 		return (0);
@@ -65,14 +65,13 @@ static int addnode(char *string, t_node **a)
 	return (1);
 }
 
-int create_stacks(t_vars *v, int argc, char **argv)
+int	create_stacks(t_vars *v, int argc, char **argv)
 {
-	int i;
-	int j;
-	char **array;
+	int		i;
+	int		j;
+	char	**array;
 
 	i = 1;
-	array = NULL;
 	if (argc == 1)
 		return (0);
 	while (argv[i])

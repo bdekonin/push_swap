@@ -6,13 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 13:34:43 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/10 20:45:18 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:17:17 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isprint(int c)
+int	ft_isprint(int c)
 {
 	return (c >= 040 && c <= 0176);
 }

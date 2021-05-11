@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strcat.c                                        :+:    :+:            */
+/*   ft_strcat_bonus.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/31 17:17:29 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/05/31 17:21:25 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:26:58 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strcat(char *dst, const char *src)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = ft_strlen(dst);
 	j = 0;

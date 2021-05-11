@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/10 20:49:53 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/10 20:49:55 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:11:23 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t i;
-	size_t j;
-	size_t count;
+	size_t	i;
+	size_t	j;
+	size_t	count;
 
 	i = 0;
 	j = 0;
 	count = ft_strlen(needle);
 	if (count == 0)
-		return ((char*)haystack);
+		return ((char *)haystack);
 	while (haystack[i] != '\0' && i != len)
 	{
 		j = 0;
@@ -41,7 +41,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		{
 			j++;
 			if (count == j)
-				return ((char*)haystack + i);
+				return ((char *)haystack + i);
 		}
 		i++;
 	}

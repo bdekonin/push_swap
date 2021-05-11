@@ -6,7 +6,7 @@
 #    By: bdekonin <bdekonin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 12:24:22 by bdekonin      #+#    #+#                  #
-#    Updated: 2021/05/05 15:57:04 by bdekonin      ########   odam.nl          #
+#    Updated: 2021/05/11 14:30:46 by bdekonin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ ft_node_insert_sort.c ft_node_is_sorted.c ft_node_iter.c \
 ft_node_index.c ft_node_join.c ft_node_last.c \
 ft_node_new.c ft_node_number.c ft_node_remove_if.c \
 ft_node_remove_one.c ft_node_size.c \
-ft_node_unlink.c ft_print_node_list.c ft_atod.c
+ft_node_unlink.c ft_print_node_list.c ft_atod.c \
+ft_intswap_bonus.c
 
 
 SRCS = $(EXTRA_SRC) ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
@@ -57,14 +58,14 @@ $(NAME): $(OFILES) $(INCLUDES)
 	@echo "$(GREEN)[libft] - Created a Library and Object Files.$(NOCOLOR)"
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -c $<
+	@$(CC) -Wall -Wextra -Werror -c $<
 
 clean:
 	@/bin/rm -f $(OFILES)
 	@/bin/rm -f a.out
 	@echo "$(GREEN)[libft] - Removed All Object Files.$(NOCOLOR)"
 
-fclean:    clean
+fclean: clean
 	@/bin/rm -f $(NAME)
 	@echo "$(GREEN)[libft] - Removed .a file and all .o files.$(NOCOLOR)"
 

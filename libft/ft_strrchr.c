@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 11:39:22 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/26 21:48:20 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:11:00 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *str, int c)
 	char	*s1;
 	int		i;
 
-	s1 = (char*)str;
+	s1 = (char *)str;
 	i = ft_strlen(s1);
 	while (i >= 0)
 	{

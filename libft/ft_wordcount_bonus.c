@@ -6,15 +6,15 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/23 11:06:47 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/23 11:07:04 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:03:25 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_wordcount(char *str)
+int	ft_wordcount(char *str)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	while (*str)

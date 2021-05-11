@@ -6,13 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/05 16:28:39 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/05 16:29:00 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 14:28:36 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void    createfunctionarray(t_struct *v)
+void	createfunctionarray(t_struct *v)
 {
 	v->p[SA] = sa;
 	v->p[SB] = sb;

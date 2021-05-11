@@ -6,26 +6,25 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/29 13:40:57 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/04 15:39:40 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 14:23:13 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-// 0 1 2
-// 0 2 1	rra	sa
-// 1 0 2	sa
-// 1 2 0	rra
-// 2 1 0	sa	rra of ra sa
-// 2 0 1	ra
+#define SMALLEST 0
+#define MIDDLE 1
+#define BIGGEST 2
+#define HEAD 3
+#define LAST 4
 
-static int get_middle_num(t_node *list)
+static int	get_middle_num(t_node *list)
 {
 	t_node	*node;
 	int		smallest;
 	int		biggest;
 	int		current;
-	
+
 	node = list;
 	smallest = get_smallest_num(list);
 	biggest = get_biggest_num(list);
@@ -39,48 +38,30 @@ static int get_middle_num(t_node *list)
 	return (-1);
 }
 
-void three_numbers(t_vars *v)
+void	three_numbers(t_vars *v)
 {
-	int smallest;
-	int middle;
-	int biggest;
-	int head;
-	int last;
-	
-	smallest = get_smallest_num(v->a);
-	middle = get_middle_num(v->a);
-	biggest = get_biggest_num(v->a);
+	int	nums[5];
 
-	head = ft_atoi(v->a->content);
-	last = ft_atoi(ft_node_last(v->a)->content);
-	if (head == smallest && last == middle)
+	nums[SMALLEST] = get_smallest_num(v->a);
+	nums[MIDDLE] = get_middle_num(v->a);
+	nums[BIGGEST] = get_biggest_num(v->a);
+	nums[HEAD] = ft_atoi(v->a->content);
+	nums[LAST] = ft_atoi(ft_node_last(v->a)->content);
+	if (nums[HEAD] == nums[SMALLEST] && nums[LAST] == nums[MIDDLE])
 	{
-		// rra sa
 		caller(v, RRA);
 		caller(v, SA);
 	}
-	else if (head == middle && last == biggest)
-	{
-		// sa
+	else if (nums[HEAD] == nums[MIDDLE] && nums[LAST] == nums[BIGGEST])
 		caller(v, SA);
-	}
-	else if (head == middle && last == smallest)
-	{
-		// rra
+	else if (nums[HEAD] == nums[MIDDLE] && nums[LAST] == nums[SMALLEST])
 		caller(v, RRA);
-	}
-	else if (head == biggest && last == smallest)
+	else if (nums[HEAD] == nums[BIGGEST] && nums[LAST] == nums[SMALLEST])
 	{
-		// ra sa
 		caller(v, RA);
 		caller(v, SA);
 	}
-	else if (head == biggest && last == middle)
-	{
-		// ra
+	else if (nums[HEAD] == nums[BIGGEST] && nums[LAST] == nums[MIDDLE])
 		caller(v, RA);
-	}
-	else
-	 	// sorted
 	return ;
 }

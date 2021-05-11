@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 15:20:21 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/26 21:40:25 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:24:32 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char		*ptr1;
 	char		*ptr2;
 
-	ptr1 = (char*)src;
-	ptr2 = (char*)dst;
+	ptr1 = (char *)src;
+	ptr2 = (char *)dst;
 	i = 0;
 	if (!ptr1 && !ptr2)
 		return (NULL);

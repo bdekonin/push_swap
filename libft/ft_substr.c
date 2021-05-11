@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 10:49:51 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/23 12:50:57 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:39:56 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (!s)
 		return (0);
-	src = (char*)s;
+	src = (char *)s;
 	if ((size_t)start > ft_strlen(s) && src[0] != '\0')
 		return (ft_strdup(""));
 	if (ft_strlen(s) - start < len)

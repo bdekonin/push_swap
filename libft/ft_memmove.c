@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 10:37:57 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/10 20:46:31 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:24:37 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	char	*source;
 
 	dest = dst;
-	source = (char*)src;
+	source = (char *)src;
 	if (src == NULL && dst == NULL)
 		return (dst);
 	if (len > (size_t)dest - (size_t)source)

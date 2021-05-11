@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/06 13:36:49 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/07/14 21:44:06 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:15:44 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	*strjoin_and_free(char *s1, char *s2)
 
 static int	read_file(int fd, char **line, char *buffer)
 {
-	int ret;
+	int	ret;
 
 	ret = read(fd, buffer, BUFFER_SIZE);
 	if (ret > 0)
@@ -63,7 +63,7 @@ static int	read_file(int fd, char **line, char *buffer)
 	return (ret);
 }
 
-int			ft_getline(int fd, char **line)
+int	ft_getline(int fd, char **line)
 {
 	int		ret;
 	char	buffer[BUFFER_SIZE + 1];

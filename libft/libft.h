@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 08:07:31 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/05 15:56:50 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 14:42:39 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include "get_next_line.h"
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -28,7 +28,6 @@ typedef struct s_node
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
-
 
 /*
 ** Functions from ctype.h
@@ -114,29 +113,34 @@ void (*del)(void *));
 ** Ft_node Functions
 */
 
-void	ft_node_add_back(t_node **head, t_node *new_node);
-void	ft_node_add_front(t_node **head, t_node *new_node);
-void	ft_node_combine(t_node **head, t_node *right, int (*cmp)());
-void	ft_node_del_all(t_node **head, void (*del)(void *));
-void	ft_node_del_one(t_node *node, void (*del)(void *));
-t_node	*ft_node_dup(t_node *head, void *(*dup)(void *), void (*del)(void *));
-t_node	*ft_node_find(t_node *start, void *data_ref, int (*cmp)());
-void	ft_node_insert_after(t_node **head, t_node *node, t_node *after_this);
-void	ft_node_insert_before(t_node **head, t_node *node, t_node *before_this);
-void	ft_node_insert_sort(t_node **head, t_node *node, int (*cmp)());
-int		ft_node_is_sorted(t_node **head, int (*cmp)());
-void	ft_node_iter(t_node *node, void (*f)(void *));
-size_t	ft_node_index(t_node *start, void *data_ref, int (*cmp)());
-void	ft_node_join(t_node *left, t_node *right);
-t_node	*ft_node_last(t_node *node);
-t_node	*ft_node_new(void *content);
-t_node	*ft_node_number(t_node *node, size_t number);
-void	ft_node_remove_if(t_node **head, void *data_ref, \
-		int (*cmp)(), void (*del)(void *));
-void	ft_node_remove_one(t_node **head, t_node *node, void (*del)(void *));
-size_t	ft_node_size(t_node *node);
-t_node	*ft_node_unlink(t_node **head, t_node *node);
-void	ft_print_node_list(t_node *node, void (*print)());
+void				ft_node_add_back(t_node **head, t_node *new_node);
+void				ft_node_add_front(t_node **head, t_node *new_node);
+void				ft_node_combine(t_node **head, t_node *right, int (*cmp)());
+void				ft_node_del_all(t_node **head, void (*del)(void *));
+void				ft_node_del_one(t_node *node, void (*del)(void *));
+t_node				*ft_node_dup(t_node *head, void *(*dup)(void *), \
+	void (*del)(void *));
+t_node				*ft_node_find(t_node *start, void *data_ref, int (*cmp)());
+void				ft_node_insert_after(t_node **head, t_node *node, \
+	t_node *after_this);
+void				ft_node_insert_before(t_node **head, t_node *node, \
+	t_node *before_this);
+void				ft_node_insert_sort(t_node **head, t_node *node, \
+	int (*cmp)());
+int					ft_node_is_sorted(t_node **head, int (*cmp)());
+void				ft_node_iter(t_node *node, void (*f)(void *));
+size_t				ft_node_index(t_node *start, void *data_ref, int (*cmp)());
+void				ft_node_join(t_node *left, t_node *right);
+t_node				*ft_node_last(t_node *node);
+t_node				*ft_node_new(void *content);
+t_node				*ft_node_number(t_node *node, size_t number);
+void				ft_node_remove_if(t_node **head, void *data_ref, \
+	int (*cmp)(), void (*del)(void *));
+void				ft_node_remove_one(t_node **head, t_node *node, \
+	void (*del)(void *));
+size_t				ft_node_size(t_node *node);
+t_node				*ft_node_unlink(t_node **head, t_node *node);
+void				ft_print_node_list(t_node *node, void (*print)());
 
 /*
 ** Other Projects
@@ -163,5 +167,6 @@ int					ft_iserrno(int error);
 int					ft_getline(int fd, char **line);
 int					ft_strexpand(char **str, size_t size);
 double				ft_atod(const char *str);
+void				ft_intswap(int *x,int *y);
 
 #endif

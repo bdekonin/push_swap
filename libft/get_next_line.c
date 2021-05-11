@@ -6,15 +6,15 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/17 12:27:52 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/12 14:17:36 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:14:31 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int		find_endnull(const char *s)
+static int	find_endnull(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\n' && s[i] != '\0')
@@ -22,7 +22,7 @@ static int		find_endnull(const char *s)
 	return (i);
 }
 
-static char		*ft_strjoin_endline(char *s1, char *s2, int i, int j)
+static char	*ft_strjoin_endline(char *s1, char *s2, int i, int j)
 {
 	char	*str;
 
@@ -49,10 +49,10 @@ static char		*ft_strjoin_endline(char *s1, char *s2, int i, int j)
 	return (str);
 }
 
-static void		*buf_move(char *src)
+static void	*buf_move(char *src)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -68,7 +68,7 @@ static void		*buf_move(char *src)
 	return (src);
 }
 
-static int		createline(char *buf, char **line, int ret, int fd)
+static int	createline(char *buf, char **line, int ret, int fd)
 {
 	if (buf[0] == '\0')
 	{
@@ -94,7 +94,7 @@ static int		createline(char *buf, char **line, int ret, int fd)
 	return (createline(buf, line, ret, fd));
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	buf[OPEN_MAX][BUFFER_SIZE + 1];
 	int			ret;

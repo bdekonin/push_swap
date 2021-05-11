@@ -6,17 +6,15 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/01 12:44:10 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/05 16:15:13 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 14:04:15 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-/* insertion sort */
-
-static int getIndex(t_node *h, int num)
+static int	getIndex(t_node *h, int num)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (h)
@@ -29,12 +27,12 @@ static int getIndex(t_node *h, int num)
 	return (-1);
 }
 
-static void findNum(t_vars *v, int num, int buf)
+static void	findNum(t_vars *v, int num, int buf)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
+	int	atoi;
 
-	int atoi;
 	while (1)
 	{
 		atoi = ft_atoi(v->a->content);
@@ -51,12 +49,12 @@ static void findNum(t_vars *v, int num, int buf)
 	}
 }
 
-static void findNumB(t_vars *v, int num)
+static void	findNumB(t_vars *v, int num)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
+	int	atoi;
 
-	int atoi;
 	while (1)
 	{
 		atoi = ft_atoi(v->b->content);
@@ -76,7 +74,7 @@ static void findNumB(t_vars *v, int num)
 	}
 }
 
-void insertionsortwithbuf(t_vars *v, int bereik)
+void	insertionsortwithbuf(t_vars *v, int bereik)
 {
 	if (issorted(v->a))
 		return ;
@@ -94,4 +92,3 @@ void insertionsortwithbuf(t_vars *v, int bereik)
 		caller(v, PA);
 	}
 }
-

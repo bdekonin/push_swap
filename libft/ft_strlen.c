@@ -6,7 +6,7 @@
 /*   By: bdekonin <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 14:06:16 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/10 20:47:32 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:12:11 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')

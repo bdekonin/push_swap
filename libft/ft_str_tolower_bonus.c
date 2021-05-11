@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 15:07:58 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/06/06 13:56:46 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:26:44 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_str_tolower(char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

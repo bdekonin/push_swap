@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 16:25:38 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/23 13:01:39 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:24:55 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	ft_putendl_fd(char *s, int fd)
 {
-	int ret;
+	int	ret;
 
 	if (!s)
 		return (-1);

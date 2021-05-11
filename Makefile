@@ -6,12 +6,16 @@
 #    By: bdekonin <bdekonin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/04/07 19:10:12 by bdekonin      #+#    #+#                  #
-#    Updated: 2021/05/11 10:44:15 by bdekonin      ########   odam.nl          #
+#    Updated: 2021/05/11 17:12:30 by bdekonin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 PS = push_swap
 CH = checker
+
+NOCOLOR = \033[0m
+BLUE = \033[34m
+LIGHTBLUE = \033[94m
 
 SRC_UTILS = \
 	utils/create_stacks.c  \
@@ -20,7 +24,11 @@ SRC_UTILS = \
 	utils/get_biggest_num.c \
 	utils/get_smallest_num.c \
 	utils/issorted.c \
-	utils/operations.c
+	utils/caller.c \
+	utils/push.c \
+	utils/reverse_rotate.c \
+	utils/rotate.c \
+	utils/swap.c
 
 SRC_PS = $(SRC_UTILS) \
 	ps/sorts/insertionsortwithbuf.c \
@@ -37,35 +45,41 @@ LIBFT = ./libft/libft.a
 OFILES_PS = $(SRC_PS:.c=.o)
 OFILES_CH = $(SRC_CH:.c=.o)
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS =
 
 all: $(PS) $(CH)
 
 $(PS): $(OFILES_PS) $(LIBFT)
 	@gcc $(FLAGS) $(SRC_PS) $(LIBFT) -o $(PS)
-	echo Created $(PS)
+	@echo "$(BLUE)[$(PS)] - Created Executable and Object Files.$(NOCOLOR)"
 $(CH): $(OFILES_CH) $(LIBFT)
 	@gcc $(FLAGS) $(SRC_CH) $(LIBFT) -o $(CH)
-	echo Created $(CH)
+	@echo "$(LIGHTBLUE)[$(CH)] - Created Executable and Object Files.$(NOCOLOR)"
 
 $(LIBFT):
-	@make -c libft
+	@make -C libft
 
 %.o: %.c
 	@gcc -Ilibft -c $< -o $@
 
 clean:
+	@echo "$(BLUE)[$(PS)] - Removed All Object Files.$(NOCOLOR)"
 	@/bin/rm -f $(OFILES_PS)
+	@echo "$(LIGHTBLUE)[$(CH)] - Removed All Object Files.$(NOCOLOR)"
 	@/bin/rm -f $(OFILES_CH)
+	@make -C libft clean
 
 fclean: clean
 	@/bin/rm -f $(PS)
+	@echo "$(BLUE)[$(PS)] - Removed .a file and all .o files.$(NOCOLOR)"
 	@/bin/rm -f $(CH)
+	@echo "$(LIGHTBLUE)[$(CH)] - Removed .a file and all .o files.$(NOCOLOR)"
+	@make -C libft fclean
 
-py: re
-	python3 tester/pyviz.py `ruby -e "puts (1..200).to_a.shuffle.join(' ')"`
+py: all
+	python3 tester/pyviz.py `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
 
-arg: re
+arg: all
 	@./push_swap $($@) | ./checker $($@)
 	@./push_swap $($@) | wc -l
 

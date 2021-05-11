@@ -6,13 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 16:18:24 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/07/14 21:42:55 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:25:36 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t	temp_size;
 	char	sep[2];

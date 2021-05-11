@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 16:51:16 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/10 20:46:17 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:23:58 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	char	*str;
 
 	i = 0;
-	str = (char*)s;
+	str = (char *)s;
 	while (i < n)
 	{
 		if (i == n || str[i] == c)

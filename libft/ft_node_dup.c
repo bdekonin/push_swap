@@ -6,61 +6,11 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/05 11:55:57 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:45:25 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:37:09 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-**	typedef struct s_elem
-**	{
-**		int num;
-**		char	*str;
-**	}	t_elem;
-**	
-**	void	print_elem(t_elem *e)
-**	{
-**		ft_putendl_fd(e->str, 1);
-**	}
-**	
-**	t_elem	*create_elem(int num, char *str)
-**	{
-**		t_elem	*e;
-**	
-**		e = ft_calloc(1, sizeof(t_elem));
-**		e->num = num;
-**		e->str = ft_strdup(str);
-**		return (e);
-**	}
-**	
-**	void	delete_elem(void *ptr)
-**	{
-**		t_elem	*e;
-**	
-**		e = ptr;
-**		ft_free(e->str);
-**		ft_free(e);
-**	}
-**	
-**	void	*ft_dup(void *ptr)
-**	{
-**		t_elem	*dst;
-**		t_elem	*src;
-**		
-**		src = ptr;
-**		dst = create_elem(src->num, src->str);
-**		if (!dst)
-**			return (NULL);
-**		return (dst);
-**	}
-**
-**	int	intcmp(t_elem *a, t_elem *b)
-**	{
-**		return (a->num - b->num);
-**	}
-**
-*/
 
 static t_node	*clean_up(t_node *dup_h, t_node *dup_c, void (*del)(void *))
 {

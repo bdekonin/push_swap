@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/16 08:58:49 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/04/29 12:42:35 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:26:33 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static size_t	get_start(const char *src, char *sep, size_t i)
 
 static size_t	get_len(const char *src, char *sep, size_t start)
 {
-	size_t i;
-	size_t len;
+	size_t	i;
+	size_t	len;
 
 	i = start;
 	len = 0;
@@ -36,8 +36,8 @@ static size_t	get_len(const char *src, char *sep, size_t start)
 
 static size_t	count_strings(const char *src, char *sep)
 {
-	size_t i;
-	size_t count;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
 	count = 0;
@@ -57,11 +57,11 @@ static size_t	count_strings(const char *src, char *sep)
 	return (count);
 }
 
-static int		init_dst(char **dst, const char *src, char *sep, size_t size)
+static int	init_dst(char **dst, const char *src, char *sep, size_t size)
 {
-	size_t i;
-	size_t start;
-	size_t len;
+	size_t	i;
+	size_t	start;
+	size_t	len;
 
 	i = 0;
 	start = 0;
@@ -73,7 +73,7 @@ static int		init_dst(char **dst, const char *src, char *sep, size_t size)
 		dst[i] = ft_substr(src, start, len);
 		if (!dst[i])
 		{
-			ft_free_array((void*)dst, i);
+			ft_free_array((void *)dst, i);
 			return (0);
 		}
 		i++;
@@ -92,14 +92,14 @@ static int		init_dst(char **dst, const char *src, char *sep, size_t size)
 ** @return char**				splitted line
 */
 
-char			**ft_split_sep(const char *src, char *sep, size_t *size)
+char	**ft_split_sep(const char *src, char *sep, size_t *size)
 {
-	char **dst;
+	char	**dst;
 
 	if (!src)
 		return (0);
 	*size = count_strings(src, sep);
-	dst = ft_calloc((*size + 1), sizeof(char*));
+	dst = ft_calloc((*size + 1), sizeof(char *));
 	if (!dst)
 		return (0);
 	if (!init_dst(dst, src, sep, *size))

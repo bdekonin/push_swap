@@ -6,16 +6,16 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 13:23:22 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/11 11:24:49 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 14:04:35 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_vars v;
-	int ret;
+	t_vars	v;
+	int		ret;
 
 	ft_bzero(&v, sizeof(t_vars));
 	ret = create_stacks(&v, argc, argv);

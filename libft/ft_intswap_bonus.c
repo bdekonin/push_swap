@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstclear_bonus.c                                :+:    :+:            */
+/*   ft_intswap_bonus.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/27 15:25:54 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/11 13:18:59 by bdekonin      ########   odam.nl         */
+/*   Created: 2021/05/11 14:29:58 by bdekonin      #+#    #+#                 */
+/*   Updated: 2021/05/11 14:30:13 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void    ft_intswap(int *x,int *y)
 {
-	t_list	*tmp;
+    int t;
 
-	if (!lst)
-		return ;
-	if (del)
-	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			*lst = tmp;
-		}
-	}
-	*lst = NULL;
+    t   = *x;
+    *x   = *y;
+    *y   =  t;
 }

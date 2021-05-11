@@ -6,13 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 14:54:51 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/04/10 20:45:06 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:17:04 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 0177);
 }

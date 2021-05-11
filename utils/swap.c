@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstclear_bonus.c                                :+:    :+:            */
+/*   swap.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/27 15:25:54 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/11 13:18:59 by bdekonin      ########   odam.nl         */
+/*   Created: 2021/05/11 14:31:06 by bdekonin      #+#    #+#                 */
+/*   Updated: 2021/05/11 14:43:40 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../header.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	sa(t_vars *v)
 {
-	t_list	*tmp;
-
-	if (!lst)
+	if (!v->a || ft_node_size(v->a) == 1)
 		return ;
-	if (del)
-	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			*lst = tmp;
-		}
-	}
-	*lst = NULL;
+	ft_intswap(v->a->content, v->a->next->content);
+}
+
+void	sb(t_vars *v)
+{
+	if (!v->b || ft_node_size(v->b) == 1)
+		return ;
+	ft_intswap(v->b->content, v->b->next->content);
+}
+
+void	ss(t_vars *v)
+{
+	sa(v);
+	sb(v);
 }

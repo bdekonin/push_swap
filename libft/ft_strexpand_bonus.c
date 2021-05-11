@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/15 14:13:39 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/07/15 14:28:43 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:27:52 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** -1 = error
 */
 
-int		ft_strexpand(char **str, size_t size)
+int	ft_strexpand(char **str, size_t size)
 {
 	size_t	stringlength;
 	char	*temp;
@@ -34,7 +34,6 @@ int		ft_strexpand(char **str, size_t size)
 	if (!temp)
 		return (-1);
 	temp = ft_memcpy(temp, *str, stringlength + size);
-	// temp = ft_memset(temp, 'a', stringlength + size);
 	free(*str);
 	*str = temp;
 	return (1);
