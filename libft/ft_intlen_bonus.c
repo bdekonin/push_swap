@@ -6,15 +6,15 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/23 10:44:09 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/06/06 13:57:41 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 11:25:32 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_intlen(long long n, int base)
+int	ft_intlen(long long n, int base)
 {
-	int count;
+	int	count;
 
 	count = 1;
 	if (n < 0)

@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/16 13:23:22 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/05 17:57:12 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 11:24:49 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ int main(int argc, char **argv)
 		free_stacks_and_exit(&v.a, &v.b, EXIT_FAILURE);
 	}
 	solver(&v);
-	// print_stacks(&v, "");
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 14:14:53 by bdekonin      #+#    #+#                 */
-/*   Updated: 2020/05/15 22:47:11 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/11 11:27:02 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*strconv(char *str, int n, int i)
+static char	*strconv(char *str, int n, int i)
 {
 	if (n <= -2147483648)
 		return (ft_memcpy(str, "-2147483648", 12));
@@ -33,7 +33,7 @@ static char		*strconv(char *str, int n, int i)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		count;
