@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 10:38:19 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/05 18:01:37 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/05/10 21:34:45 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int containsnumbers(char *str)
 	return (1);
 }
 
-static int addnode(char *string, t_node **a, t_node **b)
+static int addnode(char *string, t_node **a)
 {
 	t_node *temp;
 
@@ -83,14 +83,13 @@ int create_stacks(t_vars *v, int argc, char **argv)
 			return (0);
 		while (array[j])
 		{
-			if (!addnode(array[j], &v->a, &v->b))
+			if (!addnode(array[j], &v->a))
 				return (0);
 			j++;
 		}
 		free(array);
 		i++;
 	}
-	
 	if (!checkduplicate(v))
 		return (0);
 	return (1);

@@ -6,7 +6,7 @@
 #    By: bdekonin <bdekonin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/04/07 19:10:12 by bdekonin      #+#    #+#                  #
-#    Updated: 2021/05/05 18:03:00 by bdekonin      ########   odam.nl          #
+#    Updated: 2021/05/11 10:44:15 by bdekonin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,15 +42,17 @@ FLAGS = -Wall -Werror -Wextra
 all: $(PS) $(CH)
 
 $(PS): $(OFILES_PS) $(LIBFT)
-	gcc $(FLAGS) $(SRC_PS) $(LIBFT) -o $(PS)
+	@gcc $(FLAGS) $(SRC_PS) $(LIBFT) -o $(PS)
+	echo Created $(PS)
 $(CH): $(OFILES_CH) $(LIBFT)
-	gcc $(FLAGS) $(SRC_CH) $(LIBFT) -o $(CH)
+	@gcc $(FLAGS) $(SRC_CH) $(LIBFT) -o $(CH)
+	echo Created $(CH)
 
 $(LIBFT):
-	make -c libft
+	@make -c libft
 
 %.o: %.c
-	gcc -Ilibft -c $< -o $@
+	@gcc -Ilibft -c $< -o $@
 
 clean:
 	@/bin/rm -f $(OFILES_PS)
@@ -58,29 +60,13 @@ clean:
 
 fclean: clean
 	@/bin/rm -f $(PS)
-	@/bin/rm -f $(CH)	
+	@/bin/rm -f $(CH)
 
+py: re
+	python3 tester/pyviz.py `ruby -e "puts (1..200).to_a.shuffle.join(' ')"`
 
+arg: re
+	@./push_swap $($@) | ./checker $($@)
+	@./push_swap $($@) | wc -l
 
-
-
-# # Utils
-# UTILS = utils/*.c
-# LIBFT = ./libft/libft.a
-
-# SRC_P = $(UTILS) ps/*.c ps/sorts/*.c
-# SRC_C = $(UTILS) ch/*.c
-
-# all:
-# 	gcc $(SRC_P) $(LIBFT) -o push_swap
-# 	gcc $(SRC_C) $(LIBFT) -o checker
-
-# py: all
-# 	python3 tester/pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
-
-# arg: all
-# 	@./push_swap $($@) | ./checker $($@)
-# 	@./push_swap $($@) | wc -l
-
-# clean:
-# 	rm push_swap checker
+re: fclean all
