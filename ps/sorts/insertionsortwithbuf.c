@@ -6,7 +6,7 @@
 /*   By: bdekonin <bdekonin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/01 12:44:10 by bdekonin      #+#    #+#                 */
-/*   Updated: 2021/05/11 14:04:15 by bdekonin      ########   odam.nl         */
+/*   Updated: 2021/09/22 10:32:30 by bdekonin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	getIndex(t_node *h, int num)
 	return (-1);
 }
 
-static void	findNum(t_vars *v, int num, int buf)
+void	findNum(t_vars *v, int num, int buf)
 {
 	int	x;
 	int	y;
@@ -49,7 +49,7 @@ static void	findNum(t_vars *v, int num, int buf)
 	}
 }
 
-static void	findNumB(t_vars *v, int num)
+void	findNumB(t_vars *v, int num)
 {
 	int	x;
 	int	y;

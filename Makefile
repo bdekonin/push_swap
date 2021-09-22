@@ -6,7 +6,7 @@
 #    By: bdekonin <bdekonin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/04/07 19:10:12 by bdekonin      #+#    #+#                  #
-#    Updated: 2021/05/11 17:12:30 by bdekonin      ########   odam.nl          #
+#    Updated: 2021/09/22 10:20:34 by bdekonin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC_UTILS = \
 
 SRC_PS = $(SRC_UTILS) \
 	ps/sorts/insertionsortwithbuf.c \
+	ps/sorts/five_numbers.c \
 	ps/sorts/three_numbers.c \
 	ps/sorts/two_numbers.c \
 	ps/main.c \
@@ -78,6 +79,21 @@ fclean: clean
 
 py: all
 	python3 tester/pyviz.py `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+
+5: all
+	./push_swap `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+py5: all
+	python3 tester/pyviz.py `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+
+100: all
+	./push_swap `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+py100: all
+	python3 tester/pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`	
+
+500: all
+	./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
+py500: all
+	python3 tester/pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 
 arg: all
 	@./push_swap $($@) | ./checker $($@)
